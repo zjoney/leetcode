@@ -14,19 +14,34 @@
 输出：1
  */
 
-var solution = function(isBadVersion) {
-    return function(n) {
-        let left = 1, right = n;
-        while (left < right) { // 循环直至区间左右端点相同
-            const mid = Math.floor(left + (right - left) / 2); // 防止计算时溢出
-            if (isBadVersion(mid)) {
-              // 答案在区间 [left, mid] 中
-                right = mid; 
-            } else {// 答案在区间 [mid+1, right] 中
-                left = mid + 1; 
-            }
-        }
-        // 此时有 left == right，区间缩为一个点，即为答案
-        return left;
-    };
+var solution = function (isBadVersion) {
+  let left = 1;
+  let right = n;
+  let midVersion;
+  while (left <= right) {
+    midVersion = parseInt((left + right) / 2);
+    if (isBadVersion(midVersion)) {
+      right = midVersion - 1;
+    } else {
+      left = midVersion + 1;
+    }
+  }
+  return left
 };
+
+    // return function(n) {
+    //     let left = 1, right = n;
+    //     while (left < right) { // 循环直至区间左右端点相同
+    //         const mid = Math.floor(left + (right - left) / 2); // 防止计算时溢出
+    //         if (isBadVersion(mid)) {
+    //           // 答案在区间 [left, mid] 中
+    //             right = mid; 
+    //         } else {// 答案在区间 [mid+1, right] 中
+    //             left = mid + 1; 
+    //         }
+    //     }
+    //     // 此时有 left == right，区间缩为一个点，即为答案
+    //     return left;
+    // };
+};
+
