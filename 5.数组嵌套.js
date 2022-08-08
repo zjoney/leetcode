@@ -29,3 +29,4 @@ S[0] = {A[0], A[5], A[6], A[2]} = {5, 6, 2, 0}
 };
 // test 
 const arr = [5,4,0,3,1,6,2];
+console.log(arrayNesting(arr))
