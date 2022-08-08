@@ -43,5 +43,4 @@ var solution = function (isBadVersion) {
     //     // 此时有 left == right，区间缩为一个点，即为答案
     //     return left;
     // };
-};
 
