@@ -37,5 +37,5 @@ function frequencySort(s) {
   }
   return sb.join('');
 };
-let str = "abhhKmmt"
-// console.log(frequencySort(str));
+let str = "abmmKBBt"
+console.log(frequencySort(str)); //mmBBabKt
