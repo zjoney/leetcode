@@ -15,27 +15,47 @@
 注意"cacaca"是不正确的，因为相同的字母必须放在一起。
  */
 
+// function frequencySort(s) {
+//   debugger
+//   const map = new Map();
+//   const length = s.length;
+//   for (let i = 0; i < length; i++) {
+//     const c = s[i];
+//     const frequency = (map.get(c) || 0) + 1;
+//     map.set(c, frequency);
+//   }
+//   const list = [...map.keys()];
+//   list.sort((a, b) => map.get(b) - map.get(a));
+//   const sb = [];
+//   const size = list.length;
+//   for (let i = 0; i < size; i++) {
+//     const c = list[i];
+//     const frequency = map.get(c);
+//     for (let j = 0; j < frequency; j++) {
+//       sb.push(c);
+//     }
+//   }
+//   return sb.join('');
+// };
+
 function frequencySort(s) {
   debugger
-  const map = new Map();
-  const length = s.length;
-  for (let i = 0; i < length; i++) {
-    const c = s[i];
-    const frequency = (map.get(c) || 0) + 1;
-    map.set(c, frequency);
+  let map = new Map()
+  let ans = ''
+  for (let w of s) {
+    map.set(w, (map.get(w) || 0) + 1)
   }
-  const list = [...map.keys()];
-  list.sort((a, b) => map.get(b) - map.get(a));
-  const sb = [];
-  const size = list.length;
-  for (let i = 0; i < size; i++) {
-    const c = list[i];
-    const frequency = map.get(c);
-    for (let j = 0; j < frequency; j++) {
-      sb.push(c);
+  console.log(map, 'before');
+  map = new Map([...map].sort((a, b) => {
+    return b[1] - a[1]
+  }))
+  console.log(map, 'after');
+  for (let [k, v] of map) {
+    for (let i = 0; i < v; i++) {
+      ans += k
     }
   }
-  return sb.join('');
+  return ans
 };
 let str = "abmmKBBt"
 console.log(frequencySort(str)); //mmBBabKt
