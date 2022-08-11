@@ -9,24 +9,17 @@
 输出：7
 解释：因为路径 1→3→1→1→1 的总和最小。
  */
- const minPathSum = (arr) => {
+const minPathSum = (arr) => {
   let m = arr.length;
   let n = arr[0].length;
-  if (m <= 0 || n <= 0) {
-    return 0;
-  }
+  if (m <= 0 || n <= 0) return 0;
 
   const dp = new Array(m).fill(0).map(() => new Array(0).fill(n)); // 
   // 初始化
   dp[0][0] = arr[0][0];
-  // 初始化最左边的列
-  for (let i = 1; i < m; i++) {
-    dp[i][0] = dp[i - 1][0] + arr[i][0];
-  }
-  // 初始化最上边的行
-  for (let i = 1; i < n; i++) {
-    dp[0][i] = dp[0][i - 1] + arr[0][i];
-  }
+  // 初始化第一行、第一列
+  for (let j = 1; j < n; j++) dp[0][j] = dp[0][j - 1] + arr[0][j];
+  for (let i = 1; i < m; i++) dp[i][0] = dp[i - 1][0] + arr[i][0];
   // 推导出 dp[m-1][n-1]
   for (let i = 1; i < m; i++) {
     for (let j = 1; j < n; j++) {
@@ -36,4 +29,4 @@
   return dp[m - 1][n - 1];
 }
 
-console.log(minPathSum([[1,3,1],[1,5,1],[4,2,1]])) // 7
+console.log(minPathSum([[1, 3, 1], [1, 5, 1], [4, 2, 1]])) // 7
