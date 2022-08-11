@@ -16,13 +16,13 @@ rorse -> rose (删除 'r')
 rose -> ros (删除 'e')
  */
  var minDistance = (word1, word2) => {
+  debugger
   let n1 = word1.length;
   let n2 = word2.length;
   const dp = new Array(n1 + 1).fill(0).map(() => new Array(n2 + 1).fill(0));
-  // dp[0][0...n2]的初始值
-  for (let j = 1; j <= n2; j++)
-    dp[0][j] = dp[0][j - 1] + 1;
-  // dp[0...n1][0] 的初始值
+
+  // 初始值
+  for (let j = 1; j <= n2; j++) dp[0][j] = dp[0][j - 1] + 1;
   for (let i = 1; i <= n1; i++) dp[i][0] = dp[i - 1][0] + 1;
   // 通过公式推出 dp[n1][n2]
   for (let i = 1; i <= n1; i++) {
@@ -31,11 +31,18 @@ rose -> ros (删除 'e')
       if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
         dp[i][j] = dp[i - 1][j - 1];
       } else {
-        dp[i][j] = Math.min(Math.min(dp[i - 1][j - 1], dp[i][j - 1]), dp[i - 1][j]) + 1;
+        /**
+         * 替换f[i - 1][j - 1] + 1
+         * 删除min(f[i - 1][j], f[i][j - 1]) + 1;删除word1的第i个或者删除word2的第j个
+         * 插入min(f[i - 1][j], f[i][j - 1]) + 1;word2[j] 或者word1[i] 后面添加
+         */
+        // dp[i][j] = Math.min(Math.min(dp[i - 1][j - 1], dp[i][j - 1]), dp[i - 1][j]) + 1;
+        // dp[i][j] = Math.min(Math.min(dp[i - 1][j], dp[i][j - 1]), dp[i - 1][j - 1]) + 1;
+        dp[i][j] = Math.min(Math.min(dp[i - 1][j], dp[i - 1][j - 1]), dp[i][j - 1]) + 1;
       }
     }
   }
   return dp[n1][n2]; 
 };
 
-console.log(minDistance('red', 'apple'));// n1=3 n2=5
+console.log(minDistance('rosy', 'horse'));// 3

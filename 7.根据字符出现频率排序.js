@@ -2,7 +2,6 @@
 /**
  * 根据字符出现频率排序
  * @description 给定一个字符串 s ，根据字符出现的 频率 对其进行 降序排序 。一个字符出现的 频率 是它出现在字符串中的次数。
- * @param {*} s 
  * 输入: s = "tree"
 输出: "eert"
 解释: 'e'出现两次，'r'和't'都只出现一次。
@@ -45,11 +44,9 @@ function frequencySort(s) {
   for (let w of s) {
     map.set(w, (map.get(w) || 0) + 1)
   }
-  console.log(map, 'before');
   map = new Map([...map].sort((a, b) => {
     return b[1] - a[1]
   }))
-  console.log(map, 'after');
   for (let [k, v] of map) {
     for (let i = 0; i < v; i++) {
       ans += k
