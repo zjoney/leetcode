@@ -1,5 +1,6 @@
 
 /**
+ * 考察：哈希表Map
  * @difficulty中等
  * @description:451. 根据字符出现频率排序
  * 给定一个字符串 s ，根据字符出现的 频率 对其进行 降序排序 。一个字符出现的 频率 是它出现在字符串中的次数。
@@ -9,7 +10,6 @@
 因此'e'必须出现在'r'和't'之前。此外，"eetr"也是一个有效的答案。
 
  */
-
 // function frequencySort(s) {
 //   debugger
 //   const map = new Map();
