@@ -15,7 +15,20 @@
 1. 向右 -> 向右 -> 向下 -> 向下
 2. 向下 -> 向下 -> 向右 -> 向右
  */
-var uniquePathsWithObstacles = function(obstacleGrid) {
-
+var uniquePathsWithObstacles = function (obstacleGrid) {
+  const m = obstacleGrid.length;
+  const n = obstacleGrid[0].length;
+  // 数组初始化
+  const dp = new Array(m).fill(0).map(() => new Array(n).fill(0));
+  // 最左边一列  最顶部一列初始化
+  for (let j = 0; j < n; j++) dp[0][j] = 1;
+  for (let i = 0; i < m; i++) dp[i][0] = 1;
+  // 找对应关系,有障碍置0
+  for (let i = 1; i < m; i++) {
+    for (let j = 1; j < n; j++) {
+      dp[i][j] = obstacleGrid[i][j] ==1? 0 : dp[i - 1][j] + dp[i][j - 1];
+    }
+  }
+  return dp[m - 1][n - 1]
 };
-console.log(uniquePathsWithObstacles([]));
+console.log(uniquePathsWithObstacles([[0, 0, 0], [0, 1, 0], [0, 0, 0]])); // 2
