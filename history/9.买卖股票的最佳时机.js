@@ -31,8 +31,8 @@ var maxProfit = function (prices) {
   dp[0][0] = 0; //第0天不持有
   dp[0][1] = -prices[0]; //第0天持有
   for (let i = 1; i < len; i++) {
-      dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
-      dp[i][1] = Math.max(dp[i - 1][1], -prices[i]);
+      dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);// 没有股票时候，没有股票不操作或者有股票操作卖出
+      dp[i][1] = Math.max(dp[i - 1][1], -prices[i]);// 有股票时候， 有股票不操作（不卖）或者i-1天不持有买入
   }
   return dp[len - 1][0];
   
