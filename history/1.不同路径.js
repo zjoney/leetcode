@@ -9,7 +9,7 @@
  * 输入：m = 3, n = 7
  * 输出：28
  */
- var uniquePaths = (m, n) => {
+ var uniquePaths = function(m, n){
   // 1定义数组含义
   let dp = new Array(m).fill(0).map(() => new Array(n).fill(0));
   // 2 找出关系数组元素间的关系式

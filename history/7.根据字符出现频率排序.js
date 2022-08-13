@@ -33,7 +33,7 @@
 //   return sb.join('');
 // };
 
-function frequencySort(s) {
+var frequencySort = function(s) {
   debugger
   let map = new Map()
   let ans = ''

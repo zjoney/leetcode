@@ -9,7 +9,7 @@
 输出：7
 解释：因为路径 1→3→1→1→1 的总和最小。
  */
-const minPathSum = (arr) => {
+const minPathSum = function(arr){
   let m = arr.length;
   let n = arr[0].length;
   if (m <= 0 || n <= 0) return 0;

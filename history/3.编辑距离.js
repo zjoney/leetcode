@@ -16,7 +16,7 @@ horse -> rorse (将 'h' 替换为 'r')
 rorse -> rose (删除 'r')
 rose -> ros (删除 'e')
  */
- var minDistance = (word1, word2) => {
+ var minDistance = function(word1, word2){
   debugger
   let n1 = word1.length;
   let n2 = word2.length;
