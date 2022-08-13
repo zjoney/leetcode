@@ -7,7 +7,7 @@
  * 输入：m = 3, n = 7
  * 输出：28
  */
-var uniquePaths = (m, n) => {
+var uniquePaths = function(m, n){
   const dp = new Array(m).fill(0).map(() => new Array(n).fill(0));
   // 初始化第一行和第一列
   for (let j = 0; j < n; j++) {
