@@ -8,19 +8,20 @@
  * 输出：28
  */
 var uniquePaths = (m, n) => {
-  // 定义数组含义
-  const dp = new Array(m).fill(0).map(() => new Array(n).fill(0))
-  
-  // 初始化最上、最右排
-  for(j=0; j<n; j++) dp[0][j] = 1;
-  for(i=0; i<m; i++) dp[i][0] = 1;
-
-  // 找出对应关系
-  for(i=1; i<m; i++){
-    for(j=1; j<n; j++){
-     dp[i][j] = dp[i-1][j] + dp[i][j-1]
+  const dp = new Array(m).fill(0).map(() => new Array(n).fill(0));
+  // 初始化第一行和第一列
+  for (let j = 0; j < n; j++) {
+    dp[0][j] = 1;
+  }
+  for (let i = 0; i < m; i++) {
+    dp[i][0] = 1;
+  }
+  // 填充dp数组
+  for (let i = 1; i < m; i++) {
+    for (let j = 1; j < n; j++) {
+      dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
     }
   }
-  return dp[m-1][n-1];
+  return dp[m - 1][n - 1];
 }
 console.log(uniquePaths(3, 7));// 28
