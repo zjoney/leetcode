@@ -12,11 +12,17 @@
 var minPathSum = function (arr) {
   const m = arr.length;
   const n = arr[0].length;
-  const dp = new Array(m).fill(0).map(()=>new Array(n).fill(0));
+  const dp = new Array(m).fill(0).map(() => new Array(n).fill(0));
+  dp[0][0] = arr[0][0];
   //  初始化第一行、第一列
-  for(let j=1; j<n; j++) dp[0][j] = 1
-  for(let i=1; i<m; i++) dp[i][0] = 1
+  for (let j = 1; j < n; j++) dp[0][j] = dp[0][j - 1] + arr[0][j];
+  for (let i = 1; i < m; i++) dp[i][0] = dp[i - 1][0] + arr[i][0];
   // 找对关系，填充数组
-
+  for (let i = 1; i < m; i++) {
+    for (let j = 1; j < n; j++) {
+      dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + arr[i][j]
+    }
+  }
+  return dp[m - 1][n - 1];
 };
 console.log(minPathSum([[1, 3, 1], [1, 5, 1], [4, 2, 1]]));// 7
