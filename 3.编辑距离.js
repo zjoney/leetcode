@@ -19,6 +19,19 @@ rorse -> rose (删除 'r')
 rose -> ros (删除 'e')
  */
 var minDistance = function (word1, word2) {
-
+  const m = word1.length;
+  const n = word2.length;
+  // 初始化
+  const dp = new Array(m).fill(0).map(() => new Array(n).fill(0));
+  // 初始化第一行、第一列
+  for (let j = 1; j < n; j++) dp[0][j] = dp[0][j - 1] + 1;
+  for (let i = 1; i < m; i++) dp[i][0] = dp[i - 1][0] + 1;
+  // 填充数组
+  for (let i = 1; i < m; i++) {
+    for (let j = 1; j < n; j++) {
+      dp[i][j] = 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+    }
+  }
+  return dp[m - 1][n - 1];
 }
-console.log(minDistance('rosy', 'horse')); //3
+console.log(minDistance('rose', 'horse')); //3
