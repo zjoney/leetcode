@@ -11,7 +11,7 @@
 替换一个字符
 
 栗子:
-输入：word1 = "horse", word2 = "ros"
+输入：word1 = "horse", word2 = "rorse"
 输出：3
 解释：
 horse -> rorse (将 'h' 替换为 'r')
@@ -22,16 +22,20 @@ var minDistance = function (word1, word2) {
   const m = word1.length;
   const n = word2.length;
   // 初始化
-  const dp = new Array(m).fill(0).map(() => new Array(n).fill(0));
+  const dp = new Array(m + 1).fill(0).map(() => new Array(n + 1).fill(0));
   // 初始化第一行、第一列
-  for (let j = 1; j < n; j++) dp[0][j] = dp[0][j - 1] + 1;
-  for (let i = 1; i < m; i++) dp[i][0] = dp[i - 1][0] + 1;
+  for (let j = 1; j <= n; j++) dp[0][j] = dp[0][j - 1] + 1;
+  for (let i = 1; i <= m; i++) dp[i][0] = dp[i - 1][0] + 1;
   // 填充数组
-  for (let i = 1; i < m; i++) {
-    for (let j = 1; j < n; j++) {
-      dp[i][j] = 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      if (word1.charAt[i - 1] == word2.charAt[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1];
+      } else {
+        dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1;
+      }
     }
   }
-  return dp[m - 1][n - 1];
+  return dp[m][n];
 }
-console.log(minDistance('rose', 'horse')); //3
+console.log(minDistance('rory', 'horse')); //3
