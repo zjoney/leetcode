@@ -13,9 +13,6 @@
      总利润为 4 + 3 = 7 。
  */
 
-var maxProfit = function () {
-
-}
 var maxProfit = function (prices) {
   const n = prices.length;
   const dp = new Array(n).fill(0).map(v => new Array(2).fill(0));
