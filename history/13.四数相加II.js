@@ -17,6 +17,8 @@ nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0
 
 分析：
 1. 哈希表：两层循环，将两个数组的和存入哈希表，时间复杂度O(n^2)
+   a+b=-(c+d)
+   因此先把 a+b 的值存入哈希表，然后再遍历 c+d，如果哈希表中存在 -(c+d) 的值，就说明存在 a+b=-(c+d) 的情况
  */
 
 var fourSumCount = function (nums1, nums2, nums3, nums4) {
