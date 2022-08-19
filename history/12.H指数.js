@@ -36,5 +36,17 @@ var hIndex = function (citations) {
   let h = citations.length - l;
   return citations[l] >= h ? h : 0;
 };
-let res = hIndex([3, 0, 6, 1, 5])
-// console.log('out', res);// 3
+var hIndex2 = function(citations) {
+  citations.sort((a, b) => a - b); // 升序[0,1,3,5,6]
+  let h = 0, i = citations.length - 1; 
+  while (i >= 0 && citations[i] > h) {
+      h++; 
+      i--;
+  }
+  return h;
+};
+let res = hIndex2(
+  // [3, 0, 6, 1, 5]
+  [8,7,6,5,4,2,1]
+  )
+console.log('out', res);// 4
