@@ -12,10 +12,10 @@
 输入：citations = [3,0,6,1,5]
 输出：3 
 解释：给定数组表示研究者总共有 5 篇论文，每篇论文相应的被引用了 3, 0, 6, 1, 5 次。
-     由于研究者有 3 篇论文每篇 至少 被引用了 3 次，其余两篇论文每篇被引用 不多于 3 次，所以她的 h 指数是 3。
+     由于研究者有 3 篇论文每篇 至少 被引用了 3 次，其余两篇论文每篇被引用 不多于 3 次，所以她的 h 指数是 3。
  * 分析：
  * 二分查找目标是查找后半段的左边界
-    题目理解，h=3, 3,6,5这三个都大于h, 0,1这两个小于h，所以h=3
+    题目理解:3,6,5这三个都大于h, 0,1这两个小于h，所以h=3
  */
 
 var hIndex = function (citations) {
@@ -23,14 +23,18 @@ var hIndex = function (citations) {
   citations.sort((a, b) => a - b);
   // 下半部的左边界: citations[i] >= citations.length - i
   let l = 0,
-      r = citations.length - 1;
+    r = citations.length - 1;
   while (l < r) {
-      let m = l + r >> 1;
-      if (citations[m] >= citations.length - m) r = m;
-      else l = m + 1;
+    let m = l + r >> 1;
+    if (citations[m] >= citations.length - m) {
+      r = m
+    } else {
+      l = m + 1
+    }
   }
 
   let h = citations.length - l;
   return citations[l] >= h ? h : 0;
 };
-console.log(hIndex([3, 0, 6, 1, 5]));// 3
+let res = hIndex([3, 0, 6, 1, 5])
+// console.log('out', res);// 3
