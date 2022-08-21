@@ -15,31 +15,31 @@ nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0
 1. (0, 0, 0, 1) -> nums1[0] + nums2[0] + nums3[0] + nums4[1] = 1 + (-2) + (-1) + 2 = 0
 2. (1, 1, 0, 0) -> nums1[1] + nums2[1] + nums3[0] + nums4[0] = 2 + (-1) + (-1) + 0 = 0
 
-分析：
-1. 哈希表+分组：A和B一组，C和D一组。两层循环，将两个数组的和存入哈希表，时间复杂度O(n^2)
+题目理解：
+1. 哈希表：两层循环，将两个数组的和存入哈希表，时间复杂度O(n^2)
+   按照上面分析得出公式a+b=-(c+d)，
+   因此先把 a+b 的值存入哈希表，然后再遍历 c+d，如果哈希表中存在 -(c+d) 的值，就说明存在 a+b=-(c+d) 的情况
  */
-var fourSumCount = function (A, B, C, D) {
-  debugger
-  const mapAB = new Map();
-  for (let i of A) {
-      for (let j of B) {
-          // 统计AB之和及对应的数量
-          if (mapAB.has(i + j)) {
-              mapAB.set(i + j, mapAB.get(i + j) + 1);
-          } else {
-              mapAB.set(i + j, 1);
-          }
+
+var fourSumCount = function (nums1, nums2, nums3, nums4) {
+  let abMap = new Map();
+  for (let i of nums1) {
+    for (let j of nums2) {
+      if (abMap.has(i + j)) {
+        abMap.set(i + j, abMap.get(i + j) + 1);
+      } else {
+        abMap.set(i + j, 1);
       }
+    }
   }
   let res = 0;
-  for (let k of C) {
-      for (let l of D) {
-          // 若A[i] + B[j] === -(C[k] + D[l])，则将数量加入到结果中
-          if (mapAB.has(-k - l)) {
-              res += mapAB.get(-k - l);
-          }
+  for (let m of nums3) {
+    for (let n of nums4) {
+      if (abMap.has(-(m + n))) {
+        res += abMap.get(-(m + n));
       }
+    }
   }
   return res;
 };
-console.log(fourSumCount([1,2], [-2,-1], [-1,2], [0,2]));// 1
+console.log(fourSumCount([1, 2], [-2, -1], [-1, 2], [0, 2]));// 2

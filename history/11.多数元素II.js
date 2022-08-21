@@ -8,7 +8,12 @@
 示例 1：
 输入：nums = [3,2,3]
 输出：[3]
-官方写的 vs  自己写的
+
+题目理解:先遍历数组每一项，存储至Map中。
+不存在，则该项置为1，存在，获取该项的值，且加1。
+求出操作边界值seperateLine，数组 nums除以3，并用 Math.floor 求整。
+遍历Map，使用entries方法，遍历每一项，如果 value > seperateLine；将对应的值放到结果数组中。
+返回结果数组中。
  */
 // var majorityElement = function(nums) {
 //   const cnt = new Map();
@@ -29,15 +34,10 @@
 
 //   return ans;
 // };
+
 /**
- * 先遍历数组每一项，存储至Map中；
-不存在，则该项置为1，存在，获取该项的值，且加1；
-
-求出操作边界值seperateLine，数组 nums除以3，并用 Math.floor 求整。
-
-遍历Map，使用entries方法，遍历每一项，如果 value > seperateLine；将对应的值放到结果数组中。
-
-返回结果数组中。
+ * 方法2
+ * @param {*} nums 
  */
 var majorityElement = function (nums) {
   let map = new Map();
