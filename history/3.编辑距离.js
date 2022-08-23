@@ -15,9 +15,14 @@
 horse -> rorse (将 'h' 替换为 'r')
 rorse -> rose (删除 'r')
 rose -> ros (删除 'e')
+题目理解：
+dp[i][j] 表示以下标i-1为结尾的字符串word1，i-1在后续公式中更容易理解
+dp矩阵中一定是从左到右从上到下去遍历。
+dp[i][j]是依赖左方，上方和左上方元素的.也就是dp[i][j] = Math.min(Math.min(dp[i - 1][j], dp[i - 1][j - 1]), dp[i][j - 1]) + 1;
+
  */
  var minDistance = function(word1, word2){
-  debugger
+  debugger;
   let n1 = word1.length;
   let n2 = word2.length;
   const dp = new Array(n1 + 1).fill(0).map(() => new Array(n2 + 1).fill(0));
