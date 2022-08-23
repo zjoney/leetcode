@@ -14,8 +14,13 @@
 从左上角到右下角一共有 2 条不同的路径：
 1. 向右 -> 向右 -> 向下 -> 向下
 2. 向下 -> 向下 -> 向右 -> 向右
+题目理解:
+动态规划，初始化二维数组
+定义最左边，最上边为1，遇到障碍为0,这个位置往后的位置都是0
+
  */
 var uniquePathsWithObstacles = function (obstacleGrid) {
+  debugger;
   const m = obstacleGrid.length;
   const n = obstacleGrid[0].length;
   // 数组初始化
@@ -23,7 +28,7 @@ var uniquePathsWithObstacles = function (obstacleGrid) {
   // 最左边一列  最顶部一列初始化
   for (let j = 0; j < n; j++) dp[0][j] = 1;
   for (let i = 0; i < m; i++) dp[i][0] = 1;
-  // 找对应关系,有障碍置0
+  // 找对应关系, 有障碍置0
   for (let i = 1; i < m; i++) {
     for (let j = 1; j < n; j++) {
       dp[i][j] = obstacleGrid[i][j] ==1? 0 : dp[i - 1][j] + dp[i][j - 1];
