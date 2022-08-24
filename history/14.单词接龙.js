@@ -18,26 +18,70 @@ sk == endWord
 要避免重复访问，确定下一个转换词，就把它从单词表删除。
 
  */
-var ladderLength = function (beginWord, endWord, wordList) {
+// var ladderLength = function (beginWord, endWord, wordList) {
+//   debugger;
+//   const wordSet = new Set(wordList);
+//   const queue = [];
+//   queue.push([beginWord, 1]);
+
+//   while (queue.length) {
+//     const [word, level] = queue.shift();  // 当前出列的单词
+//     if (word == endWord) {
+//       return level;
+//     }
+//     // String.fromCharCode转换为字符串的Unicode
+//     for (let i = 0; i < word.length; i++) { // 遍历当前单词的所有ASCII字符
+//       for (let c = 97; c <= 122; c++) { // 对应26个字母(a~z)
+//         const newWord = word.slice(0, i) + String.fromCharCode(c) + word.slice(i + 1); // 形成新词
+//         if (wordSet.has(newWord)) { // 单词表里有这个新词
+//           queue.push([newWord, level + 1]); // 作为下一层的词入列
+//           wordSet.delete(newWord);  // 避免该词重复入列
+//         }
+//       }
+//     }
+//   }
+//   return 0; // bfs结束，始终没有遇到终点
+// };
+// 方法2
+var ladderLength2 = function (beginWord, endWord, wordList) {
+  debugger;
   const wordSet = new Set(wordList);
+  if (!wordSet.has(endWord)) {
+    return 0;
+  }
+  // 是否能够转换
+  const canConversion = (s1, s2) => {
+    debugger;
+    if (s1.length !== s2.length) return false;
+    // 不同字符的数量，为1表示能够转换
+    let count = 0;
+    for (let i = 0; i < s1.length; i++) {
+      if (s1[i] !== s2[i]) {
+        count++;
+      }
+      if (count > 1) {
+        return false;
+      }
+    }
+    return count === 1;
+  }
+
   const queue = [];
   queue.push([beginWord, 1]);
-
   while (queue.length) {
-    const [word, level] = queue.shift();  // 当前出列的单词
-    if (word == endWord) {
+    // 头部元素出队列
+    const [word, level] = queue.shift();
+    if (word === endWord) {
       return level;
     }
-    for (let i = 0; i < word.length; i++) { // 遍历当前单词的所有字符
-      for (let c = 97; c <= 122; c++) { // 对应26个字母
-        const newWord = word.slice(0, i) + String.fromCharCode(c) + word.slice(i + 1); // 形成新词
-        if (wordSet.has(newWord)) { // 单词表里有这个新词
-          queue.push([newWord, level + 1]); // 作为下一层的词入列
-          wordSet.delete(newWord);  // 避免该词重复入列
-        }
+    for (let item of wordSet) {
+      if (canConversion(word, item)) { // 能置换，就放在queue队列里
+        queue.push([item, level + 1]);
+        wordSet.delete(item);// 从单词表删掉
       }
     }
   }
-  return 0; // bfs结束，始终没有遇到终点
+
+  return 0;
 };
-console.log(ladderLength('hit', 'cog', ["hot", "dot", "dog", "lot", "log", "cog"])); // 5
+console.log(ladderLength2('hit', 'cog', ["hot", "dot", "dog", "lot", "log", "cog"])); // 5
