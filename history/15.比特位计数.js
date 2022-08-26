@@ -14,22 +14,24 @@
 xxxx
  */
 //Brian Kernighan 算法 
-var countBits = function(n) {
+var countBits = function (n) {
+  debugger;
   // 定义一维数组
   const bits = new Array(n + 1).fill(0);
   for (let i = 0; i <= n; i++) {
     // 填充数组
-      bits[i] = countOnes(i);
+    bits[i] = countOnes(i);
   }
   return bits
 };
 // 布莱恩 柯宁汉算法
 const countOnes = (x) => {
+  debugger;
   let ones = 0;
   while (x > 0) {
-      x &= (x - 1);
-      ones++;
+    x &= (x - 1);
+    ones++;
   }
   return ones;
 }
-console.log(countBits(2));
+console.log(countBits(3));// [0,1,1,2]
