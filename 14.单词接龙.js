@@ -11,15 +11,43 @@ sk == endWord
 示例：
 输入：beginWord = "hit", endWord = "cog", wordList = ["hot","dot","dog","lot","log","cog"]
 输出：5
-解释：一个最短转换序列是 "hit" -> "hot" -> "dot" -> "dog" -> "cog", 返回它的长度 5。
+解释：一个最短转换序列是 "hit" -> "hot" -> "dot" -> "dog" -> "cog", 返回它的长度 5。Z
 题目理解：
-从起点词出发，变成n次,变成终点词。
-找出邻接关系，比如hit的转换词是*it、h*t、hi*形式，是否存在表里，存在就找下一层的转换词。
-要避免重复访问，确定下一个转换词，就把它从单词表删除。
 
  */
 var ladderLength2 = function (beginWord, endWord, wordList) {
-    
-  };
-  console.log(ladderLength2('hit', 'cog', ["hot", "dot", "dog", "lot", "log", "cog"])); // 5
-  
+    debugger;
+    if (!wordList.length) return;
+    const wordSet = new set(wordList);
+    //    查看是否能转换
+    const canConversion = (s1, s2) => {
+        if (s1.length !== s2.length) return false;
+        // 不同字符的数量，为1表示能够转换
+        let count = 0;
+        for (let i = 0; i < s1.length; i++) {
+            if (s1[i] !== s2[i]) {
+                count++;
+            }
+            if (count > 1) {
+                return false;
+            }
+        }
+        const queue = [];
+        queue.push([beginWord, 1]);
+        while (queue.length) {
+            const [word, level] = queue.shift();
+            if (word === endWord) {
+                return level;
+            }
+            for(let item of wordSet){
+                if(canConversion(item, word)){
+                    queue.push([item, level+1]);
+                    wordSet.delete(item);
+                }
+            }
+        }
+        return count === 1;
+    }
+    return 0;
+};
+console.log(ladderLength2('hit', 'cog', ["hot", "dot", "dog", "lot", "log", "cog"])); // 5
