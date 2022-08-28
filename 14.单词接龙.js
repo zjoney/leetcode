@@ -40,7 +40,7 @@ var ladderLength2 = function (beginWord, endWord, wordList) {
                 return level;
             }
             for(let item of wordSet){
-                if(canConversion(item, word)){
+                if(canConversion(word, item)){
                     queue.push([item, level+1]);
                     wordSet.delete(item);
                 }
