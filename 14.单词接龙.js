@@ -14,7 +14,9 @@ sk == endWord
 解释：一个最短转换序列是 "hit" -> "hot" -> "dot" -> "dog" -> "cog", 返回它的长度 5。Z
 题目理解：
 将单词表映射成对象。
-
+将beiginWord存在queue数组内，按照word,level设置且首次为1。
+queue开始循环,每次取出栈底元素解构出word,level,当word等于endWord，就直接返回level,否则就循环单词映射表。
+将变量word对比单词映射表的每一个值item是否满足置换，满足就将当前的item放在queue中并且level+1, 并且将单词映射表此元素删除。
  */
 var ladderLength2 = function (beginWord, endWord, wordList) {
     debugger;
