@@ -13,13 +13,14 @@ sk == endWord
 输出：5
 解释：一个最短转换序列是 "hit" -> "hot" -> "dot" -> "dog" -> "cog", 返回它的长度 5。Z
 题目理解：
+将单词表映射成对象。
 
  */
 var ladderLength2 = function (beginWord, endWord, wordList) {
     debugger;
     if (!wordList.length) return;
-    const wordSet = new set(wordList);
-    //    查看是否能转换
+    const wordSet = new Set(wordList);
+    // 查看是否能转换
     const canConversion = (s1, s2) => {
         if (s1.length !== s2.length) return false;
         // 不同字符的数量，为1表示能够转换
@@ -32,21 +33,22 @@ var ladderLength2 = function (beginWord, endWord, wordList) {
                 return false;
             }
         }
-        const queue = [];
-        queue.push([beginWord, 1]);
-        while (queue.length) {
-            const [word, level] = queue.shift();
-            if (word === endWord) {
-                return level;
-            }
-            for(let item of wordSet){
-                if(canConversion(word, item)){
-                    queue.push([item, level+1]);
-                    wordSet.delete(item);
-                }
+        return count === 1;
+    }
+
+    const queue = [];
+    queue.push([beginWord, 1]);
+    while (queue.length) {
+        const [word, level] = queue.shift();
+        if (word === endWord) {
+            return level;
+        }
+        for (let item of wordSet) {
+            if (canConversion(word, item)) {
+                queue.push([item, level + 1]);
+                wordSet.delete(item);
             }
         }
-        return count === 1;
     }
     return 0;
 };
