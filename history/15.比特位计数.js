@@ -1,5 +1,5 @@
 /**
- * 考察：
+ * 考察：布莱恩算法、动态规划
  * @difficulty简单
  * @description: 338. 比特位计数
  * 给你一个整数 n ，对于 0 <= i <= n 中的每个 i ，计算其二进制表示中 1 的个数 ，返回一个长度为 n + 1 的数组 ans 作为答案。
@@ -34,4 +34,19 @@ const countOnes = (x) => {
   }
   return ones;
 }
-console.log(countBits(3));// [0,1,1,2]
+// 动态规划
+var countBits2 = function(n) {
+  debugger;
+  const bits = new Array(n + 1).fill(0);
+  console.log(bits, '');
+  let highBit = 0;
+  for (let i = 1; i <= n; i++) {
+      if ((i & (i - 1)) == 0) {
+          highBit = i;
+      }
+      // bits[i] 表示 i 的「一比特数」
+      bits[i] = bits[i - highBit] + 1;
+  }
+  return bits;
+};
+console.log(countBits2(3));// [0,1,1,2]
