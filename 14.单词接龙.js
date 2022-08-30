@@ -1,7 +1,7 @@
 /**
  * 考察：BFS+广度优先
  * @difficulty困难
- * @description: 127. 单词接龙
+ * @summary: 127. 单词接龙
  * 字典 wordList 中从单词 beginWord 和 endWord 的 转换序列 是一个按下述规格形成的序列 beginWord -> s1 -> s2 -> ... -> sk：
 
 每一对相邻的单词只差一个字母。
