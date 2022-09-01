@@ -8,51 +8,26 @@
 提示1<n<8
  */
 var generateParenthesis = function (s) {
+  let max = ''
 
-  let len = s.length();
-  if (len < 2) {
-    return s;
+  for (let i = 0; i < s.length; i++) {
+    // 分奇偶， 一次遍历，每个字符位置都可能存在奇数或偶数回文
+    helper(i, i)
+    helper(i, i + 1)
   }
 
-  let maxLen = 1, begin = 0;
-  // dp[i][j] 表示 s[i..j] 是否是回文串
-  const dp = new boolean[len][len];
-  // 初始化：所有长度为 1 的子串都是回文串
-  for (let i = 0; i < len; i++) {
-    dp[i][i] = true;
-  }
-
-  const charArray = s.toCharArray();
-  // 递推开始
-  // 先枚举子串长度
-  for (let L = 2; L <= len; L++) {
-    // 枚举左边界，左边界的上限设置可以宽松一些
-    for (let i = 0; i < len; i++) {
-      // 由 L 和 i 可以确定右边界，即 j - i + 1 = L 得
-      let j = L + i - 1;
-      // 如果右边界越界，就可以退出当前循环
-      if (j >= len) {
-        break;
-      }
-
-      if (charArray[i] != charArray[j]) {
-        dp[i][j] = false;
-      } else {
-        if (j - i < 3) {
-          dp[i][j] = true;
-        } else {
-          dp[i][j] = dp[i + 1][j - 1];
-        }
-      }
-
-      // 只要 dp[i][L] == true 成立，就表示子串 s[i..L] 是回文，此时记录回文长度和起始位置
-      if (dp[i][j] && j - i + 1 > maxLen) {
-        maxLen = j - i + 1;
-        begin = i;
-      }
+  function helper(l, r) {
+    // 定义左右双指针
+    while (l >= 0 && r < s.length && s[l] === s[r]) {
+      l--
+      r++
     }
+    // 拿到回文字符， 注意 上面while满足条件后多执行了一次，所以需要l+1, r+1-1
+    const maxStr = s.slice(l + 1, r + 1 - 1);
+    // 取最大长度的回文字符
+    if (maxStr.length > max.length) max = maxStr
   }
-  return s.substring(begin, begin + maxLen);
+  return max
 };
 
 const n = 3
