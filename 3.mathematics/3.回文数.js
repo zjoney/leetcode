@@ -1,5 +1,17 @@
 /**
- * 
+ * 考察：数学
+ * @difficulty简单
+ * @summary: 9.回文数
+ * 给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。
+回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
+示例：
+输入：x = 121
+输出：true
+题目理解：
+1、x为0、负数、首位是自然数且最后一位是0，都不是回文数
+2、可以从右向左取数组保存在变量revertedNumber，直到x值小于revertedNumber跳出循环
+3、对于偶数个位数，需要返回x等于revertedNumber
+4、对于奇数个位数，需要返回x等于revertedNumber/10的向下取整
  */
 var isPalindrome = function (x) {
   debugger;
