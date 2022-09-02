@@ -9,14 +9,16 @@
 示例:
 输入：s = "abc"
 输出：["abc","acb","bac","bca","cab","cba"]
-
+// 后续整理..............
  */
 var permutation = function (s) {
+    debugger;
     const rec = [], vis = [];
     const n = s.length;
     const arr = Array.from(s).sort();
     const perm = [];
     const backtrack = (arr, i, n, perm) => {
+        debugger;
         if (i === n) {
             rec.push(perm.toString());
             return;
