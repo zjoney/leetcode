@@ -11,6 +11,7 @@
 =============
 
 ![Getting Started](./images/4.不同路径II.jpg)
-
+==============
+![Getting Started](./images/5.%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88.png)
 
 顺序：热题HOT100—>精选Top面试题
