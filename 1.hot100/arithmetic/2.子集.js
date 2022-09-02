@@ -25,5 +25,5 @@ var subsets = function (nums) {
   backtracking(0)
   return result
 };
-const nums = [1, 2, 3]
-console.log(subsets(nums));
+const as = [1, 2, 3]
+console.log(subsets(as));
