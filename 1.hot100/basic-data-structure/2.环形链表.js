@@ -12,7 +12,16 @@
 解释：链表中有一个环，其尾部连接到第二个节点。
  */
 var hasCycle = function (head, pos) {
-
+    const map = new Map()
+    let p = head
+    while (p) {
+        if (map.get(p)) return true
+        else {
+            map.set(p, p.val)
+            p = p.next
+        }
+    }
+    return false;
 }
 const head = [3, 2, 0, -4], pos = 1;
 console.log(hasCycle(head, pos));
