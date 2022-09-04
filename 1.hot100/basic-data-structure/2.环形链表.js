@@ -11,17 +11,14 @@
 输出：true
 解释：链表中有一个环，其尾部连接到第二个节点。
  */
-var hasCycle = function (head, pos) {
-    const map = new Map()
-    let p = head
-    while (p) {
-        if (map.get(p)) return true
-        else {
-            map.set(p, p.val)
-            p = p.next
-        }
+var hasCycle = (head) => {
+    let map = new Map();
+    while (head) {
+        if (map.has(head)) return true;//如果当前节点在map中存在就说明有环
+        map.set(head, true);//否则就加入map
+        head = head.next;//迭代节点
     }
-    return false;
-}
+    return false;//循环完成发现没有重复节点，说明没环
+};
 const head = [3, 2, 0, -4], pos = 1;
 console.log(hasCycle(head, pos));
