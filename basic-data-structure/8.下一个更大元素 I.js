@@ -26,7 +26,7 @@ var nextGreaterElement = function (nums1, nums2) {
     }
     stack.push(n) 
   }
-  console.log('stack', stack);
+  // console.log('stack', stack);
   while (stack.length) {  // 栈中留有元素 说明后面没有比它们大的了, 直接存 -1
     let f = stack.pop()
     obj[f] = -1
