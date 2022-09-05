@@ -25,5 +25,5 @@ const letterCombinations = (digits) => {
   dfs('', 0); // 递归的入口，初始字符串为''，从下标0开始翻译
   return res;
 };
-const as = '23'
+const as = '23';
 console.log(letterCombinations(as));// ['ad', 'ae', 'af','bd', 'be', 'bf','cd', 'ce', 'cf']
