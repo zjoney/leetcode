@@ -24,6 +24,7 @@ var finalPrices = function (prices) {
   const n = prices.length;
   const ans = new Array(n).fill(0);
   const stack = [];
+  // 比较折扣就从右往左遍历
   for (let i = n - 1; i >= 0; i--) {
     // 栈顶值比当前元素大，就弹出栈顶元素
     while (stack.length && stack[stack.length - 1] > prices[i]) {
