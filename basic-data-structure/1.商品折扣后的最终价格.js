@@ -37,4 +37,4 @@ var finalPrices = function (prices) {
   return ans;
 };
 const ans = [8, 4, 6, 2, 3];
-console.log(finalPrices(ans));//[4,2,4,2,3]
+// console.log(finalPrices(ans));//[4,2,4,2,3]

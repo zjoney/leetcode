@@ -17,11 +17,12 @@
  */
 var nextGreaterElement = function (nums1, nums2) {
   // 一. 找出 i 之后大于 nums2[i] 的第一个元素, 存进对象中
+  debugger;
   let stack = []
   let obj = {}
   for (let n of nums2) {
-    while (stack.length && n > stack[stack.length - 1]) { // 比栈顶大的
-      let f = stack.pop()
+    while (stack.length && n > stack[stack.length - 1]) { // 当前元素比栈顶大的
+      let f = stack.pop() // 弹出栈顶
       obj[f] = n
     }
     stack.push(n) 
