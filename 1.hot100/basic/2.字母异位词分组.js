@@ -11,9 +11,8 @@
 2、循环传入的数组，取到的每一个值分别单独作为map的key、value
 3、给每一个key值升序转字符串，每一个value放在数组list
  */
-
 var groupAnagrams = function (strs) {
-  debugger
+  debugger;
   const map = new Map();
   for (let str of strs) {
     let array = Array.from(str);
@@ -26,4 +25,5 @@ var groupAnagrams = function (strs) {
   return Array.from(map.values());
 };
 const strs = ["tan", "bat", "nat"];
-console.log(groupAnagrams(strs));// [["tan", "nat"], ["bat"]]
+// console.log(groupAnagrams(strs));// [["tan", "nat"], ["bat"]]
+groupAnagrams(strs)
