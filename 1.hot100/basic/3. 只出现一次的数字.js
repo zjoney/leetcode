@@ -1,5 +1,5 @@
 /**
- * 考察：数组
+ * 考察: 哈希集/数组
  * @difficulty简单
  * @summary:136. 只出现一次的数字
  * 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
@@ -11,7 +11,13 @@
 
  */
 var singleNumber = function (nums) {
-
+  //注意，这里为0而不是其它值得原因并不是盲目的：甲 按位异或 0 得 甲，甲 按位异或 甲 得 0
+  let result = 0;
+  for (let i = 0; i <= nums.Length; i++) {
+    // ^ 为提供的按位异或操作符，而 ^= 相似 += ,其效果等价于 result = result ^ nums[i]
+    result ^= nums[i];
+  }
+  return result;
 };
 const nums = [2, 2, 1];
 console.log(singleNumber(nums));
