@@ -13,11 +13,12 @@
 var singleNumber = function (nums) {
   //注意，这里为0而不是其它值得原因并不是盲目的：甲 按位异或 0 得 甲，甲 按位异或 甲 得 0
   let result = 0;
-  for (let i = 0; i <= nums.Length; i++) {
+  for (let i = 0; i < nums.Length; i++) {
     // ^ 为提供的按位异或操作符，而 ^= 相似 += ,其效果等价于 result = result ^ nums[i]
     result ^= nums[i];
   }
   return result;
 };
+
 const nums = [2, 2, 1];
 console.log(singleNumber(nums));
