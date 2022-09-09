@@ -2,12 +2,13 @@
   "name": "leetcode",
   "version": "1.0.0",
   "description": "日常练习leetcode",
-  "main": "1.不同路径.js",
+  "main": "daily",
   "dependencies": {
     "cz-conventional-changelog": "^3.3.0"
   },
   "devDependencies": {},
   "scripts": {
+    "commit": "git-cz",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
