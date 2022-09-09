@@ -5,7 +5,7 @@
  * 如图 【image/对称二叉树.jpg】
  * 示例:
  * 输入：root = [1,2,2,3,4,4,3]
-输出：true
+输出：true 
  */
 var isSymmetric = function(root) {
 
