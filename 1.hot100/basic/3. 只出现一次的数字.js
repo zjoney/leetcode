@@ -7,7 +7,7 @@
 你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？
 示例：
 输入: [2,2,1]
-输出: 1    
+输出: 1
 
  */
 var singleNumber = function (nums) {
@@ -16,7 +16,7 @@ var singleNumber = function (nums) {
   for (const num of nums) {
     // ^ 为提供的按位异或操作符，而 ^= 相似 += ,其效果等价于 result = result ^ nums[i]
     result ^= num;
-  }
+  }  
   return result;
 };
 

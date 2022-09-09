@@ -2,13 +2,8 @@
   "name": "leetcode",
   "version": "1.0.0",
   "description": "日常练习leetcode",
-  "main": "daily",
-  "dependencies": {
-    "cz-conventional-changelog": "^3.3.0"
-  },
-  "devDependencies": {},
+  "main": "1.不同路径.js",
   "scripts": {
-    "commit": "git-cz",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/zjoney/leetcode/issues"
   },
-  "homepage": "https://github.com/zjoney/leetcode#readme"
+  "homepage": "https://github.com/zjoney/leetcode#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
