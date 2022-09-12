@@ -26,4 +26,4 @@ var groupAnagrams = function (strs) {
 }; 
 const strs = ["tan", "bat", "nat"];
 // console.log(groupAnagrams(strs));// [["tan", "nat"], ["bat"]]
-groupAnagrams(strs)
+groupAnagrams(strs) 
