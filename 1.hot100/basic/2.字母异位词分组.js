@@ -23,7 +23,7 @@ var groupAnagrams = function (strs) {
     map.set(key, list);
   }
   return Array.from(map.values());
-};
+}; 
 const strs = ["tan", "bat", "nat"];
 // console.log(groupAnagrams(strs));// [["tan", "nat"], ["bat"]]
-groupAnagrams(strs)
+groupAnagrams(strs) 
