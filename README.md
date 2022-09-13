@@ -3,6 +3,7 @@
 
 -- commitizen
 -> npm i commitizen -g
+-> npm i git-cz -g
 -> 不要使用git bash终端
 -> git add . 命令之后，使用 git cz
 ===================
