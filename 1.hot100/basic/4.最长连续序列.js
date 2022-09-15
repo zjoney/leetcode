@@ -12,6 +12,7 @@
  */
 var longestConsecutive = function (nums) {
   debugger;
+  // 使用Set结构，方便查找与删除；
   let num_set = new Set();
   for (const num of nums) {
     num_set.add(num);
@@ -20,19 +21,22 @@ var longestConsecutive = function (nums) {
   let longestStreak = 0;
 
   for (const num of num_set) {
+    // 从最小的开始查找
+    // 从没有比自己小1的数开始查找连续序列
+    // 这样可以单向处理
     if (!num_set.has(num - 1)) {
       let currentNum = num;
       let currentStreak = 1;
-
+      // 开始逐步生长
       while (num_set.has(currentNum + 1)) {
         currentNum += 1;
         currentStreak += 1;
       }
 
       longestStreak = Math.max(longestStreak, currentStreak);
-    }  
+    }
   }
-  return longestStreak; 
+  return longestStreak;
 }
 const nums = [100, 4, 200, 3, 2];
 console.log(longestConsecutive(nums)); // 3
