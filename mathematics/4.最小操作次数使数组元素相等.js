@@ -7,8 +7,14 @@
 只需要3次操作（注意每次操作会增加两个元素的值）：
 [1,2,3]  =>  [2,3,3]  =>  [3,4,3]  =>  [4,4,4]
  */
-var mincOUnt = function(){
-
+// 数学
+var minMoves = function(nums){
+  const minNum = Math.min(...nums);
+  let res = 0;
+  for(let num of nums){
+    res += num-minNum
+  }
+  return res;
 }
-
-console.log(mincount());
+const nums = [1, 2, 3]
+console.log(minMoves(nums));
