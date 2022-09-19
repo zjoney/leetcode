@@ -8,8 +8,19 @@
 输入：root = [1,null,2,3]
 输出：[1,3,2]
  */
-var inorderTraversal = function(root){
-
-}
-const root = [1,null,2,3]
-console.log(inorderTraversal(root)); //
+var inorderTraversal = function (root) {
+  const res = [];
+  const stk = [];
+  while (root || stk.length) {
+    while (root) {
+      stk.push(root);
+      root = root.left;
+    }
+    root = stk.pop();
+    res.push(root.val);
+    root = root.right;
+  }
+  return res;
+};
+const root = [1, null, 2, 3]
+console.log(inorderTraversal(root)); // [1, 3, 2]
