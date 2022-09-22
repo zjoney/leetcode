@@ -8,8 +8,12 @@
 示例：
 输入：nums = [3,2,4], target = 6
 输出：[1,2]
+题目理解：
+循环数组nums,拿到当前的值
+拿到的值存入obj变量里，如果当前的值不在Obj,那么就存obj[target-当前值] = 当前索引，当前值在obj里，返回数组即[返回之前的索引，当前索引]
  */
 var twoSum = function (nums, target) {
+  debugger;
   let obj = {};
   for (let i = 0; i < nums.length; i++) {
     let num = nums[i]
