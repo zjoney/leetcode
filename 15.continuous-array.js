@@ -6,11 +6,15 @@
 输入: nums = [0,1]
 输出: 2
 说明: [0, 1] 是具有相同数量 0 和 1 的最长连续子数组
+题目理解：
+利用前缀和 + 哈希表,保存数字出现的次数
  */
 
 var findMaxLength = function(nums) {
+  debugger;
   let maxLength = 0;
-  const map = new Map();
+  // 利用前缀和 + 哈希表,保存数字出现的次数
+  const map = new Map(); 
   let counter = 0;
   map.set(counter, -1);
   const n = nums.length;
@@ -31,4 +35,4 @@ var findMaxLength = function(nums) {
   return maxLength;
 };
 const nums = [0, 1]
-console.log(findMaxLength(nums));
+console.log(findMaxLength(nums)); // 2
