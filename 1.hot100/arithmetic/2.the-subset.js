@@ -8,6 +8,8 @@
 示例：
 输入：nums = [1,2,3]
 输出：[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+题目理解：
+列举所有组合的可能,
  */
 //例子：nums = [1,2,3]
 var subsets = function (nums) {
@@ -26,4 +28,12 @@ var subsets = function (nums) {
   return result
 };
 const as = [1, 2, 3]
-console.log(subsets(as));
+console.log(subsets(as)); 
+/**
+[
+  [],             [ 1 ],
+  [ 1, 2 ], [ 1, 2, 3 ],
+  [ 1, 3 ],       [ 2 ],
+  [ 2, 3 ],       [ 3 ]
+]
+ */
