@@ -11,7 +11,7 @@
 1 --> 1
 2 --> 10
 题目理解：
-xxxx
+考察布莱恩 柯宁汉
  */
 //Brian Kernighan 算法 
 var countBits = function (n) {
