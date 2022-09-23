@@ -9,7 +9,8 @@
 示例:
 输入：s = "abc"
 输出：["abc","acb","bac","bca","cab","cba"]
-// 后续整理..............
+题目理解：
+常用的回溯考察
  */
 var permutation = function (s) {
     debugger;
@@ -19,12 +20,12 @@ var permutation = function (s) {
     const perm = [];
     const backtrack = (arr, i, n, perm) => {
         debugger;
-        if (i === n) {
+        if (i === n) { // 2、说明已经填完了
             rec.push(perm.toString());
             return;
         }
         for (let j = 0; j < n; j++) {
-            if (vis[j] || (j > 0 && !vis[j - 1] && arr[j - 1] === arr[j])) {
+            if (vis[j] || (j > 0 && !vis[j - 1] && arr[j - 1] === arr[j])) {///3、对于重复的字符，我们一定是从左往右依次填入的空位中的
                 continue;
             }
             vis[j] = true;
@@ -35,7 +36,7 @@ var permutation = function (s) {
         }
     }
 
-    backtrack(arr, 0, n, perm);
+    backtrack(arr, 0, n, perm);// 1、表示当前排列为perm，下一个待填入空位是第n个
     const size = rec.length;
     const recArr = new Array(size).fill(0);
     for (let i = 0; i < size; i++) {
@@ -43,5 +44,5 @@ var permutation = function (s) {
     }
     return recArr;
 };
-const s = "abc";
+const s = "acb";
 console.log(permutation(s));// ["abc","acb","bac","bca","cab","cba"]
