@@ -16,7 +16,8 @@
 输入：n = 1, bad = 1
 输出：1
 题目理解：
-?????
+二分查找法
+每判断一次，就收缩边界，两边界的距离为原来的一半
  */
 
 var solution = function (isBadVersion) {
