@@ -9,7 +9,6 @@
 初始化一个数组，假设温度都是0
 遍历数组，记录天以及该天高温度。
 遍历结束，记录一个max一个max，如果temps[i] > temps[i-1]，我们说第i天没有超越第(i-1)天。说明上一天的温度都小于等于(i-1)天高温度。
-
  */
 var dailyTemperatures = function (temperatures) {
   //栈
