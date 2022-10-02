@@ -10,3 +10,6 @@
 输出：4
 
  */
+var search = function(nums, target) {
+
+};
