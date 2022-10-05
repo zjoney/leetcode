@@ -7,7 +7,7 @@
 你必须设计一个时间复杂度为 O(log n) 的算法解决此问题。
 示例 1：
 输入：nums = [4,5,6,7,0,1,2], target = 0
-输出：4
+输出：4 
 
  */
 var search = function(nums, target) {
