@@ -17,3 +17,8 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 注意，输出的顺序和三元组的顺序并不重要。
 
  */
+var threeSum = function(nums) {
+
+};
+const nums = [-1,0,1,2,-1,-4];
+console.log(threeSum(nums));
