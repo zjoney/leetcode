@@ -16,6 +16,17 @@
 如果存在重合，合并前后两个区间
  */
  var merge = function(intervals) {
+  if(intervals.length <= 1) return intervals;
+  intervals.sort((a, b) => a[0] - b[0]);
+  let ans = [];
+  ans.push(intervals[0]);
+  for(let i = 1; i < intervals.length; i++){
+      if(intervals[i][0] > ans[ans.length - 1][1]) ans.push(intervals[i]);
+      else if (intervals[i][0] <= ans[ans.length - 1][1] && intervals[i][1] > ans[ans.length - 1][1]){
+          ans[ans.length - 1][1] = intervals[i][1];
+      }
+  }
+  return ans;
 };
 
 const intervals=[[1,3],[2,6],[8,10],[15,18]];
