@@ -17,3 +17,8 @@
 输出：[1,3,2]
 
  */
+var nextPermutation = function(nums) {
+
+};
+const nums = [1,2,3];
+console.log(nextPermutation(nums));
