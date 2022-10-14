@@ -15,7 +15,12 @@
 示例 1：
 输入：nums = [1,2,3]
 输出：[1,3,2]
-
+思路：双指针
+ 1.设置两个指针：pre 和 cur
+ 2.pre 的初始值为数组长度，cur 初始值为 0
+ 3.如果 nums[cur] < nums[pre] ，说明 cur 到 pre 的比较元素小，将 cur 指向 pre ，更新 pre 的值为 cur+1
+ 4.如果 nums[cur] > nums[pre] ，说明 cur 到 pre 的比较元素大，将 cur 指向 pre ，更新 pre 的值为 cur-1
+ 5.此时 pre = cur
  */
 var nextPermutation = function(nums) {
 
