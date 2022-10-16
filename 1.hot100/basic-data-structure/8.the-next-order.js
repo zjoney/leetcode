@@ -22,7 +22,26 @@
  5.此时 pre = cur
  */
 var nextPermutation = function(nums) {
-
+  if (nums.length <= 1) {
+      return
+  }
+  let leftHand
+  for (let i = nums.length - 2; i >= 0; i--) {
+      if (nums[i] < nums[i + 1]) {
+          leftHand = i
+          break
+      }
+  }
+  for (let i = nums.length - 1; i > leftHand; i--) {
+      if (nums[i] > nums[leftHand]) {
+          [nums[i], nums[leftHand]] = [nums[leftHand], nums[i]]
+          let chopped = nums.splice(leftHand + 1)
+          chopped.reverse()
+          nums.push(...chopped)
+          return
+      }
+  }
+  nums.sort((a, b) => a - b)
 };
 const nums = [1,2,3];
 console.log(nextPermutation(nums));
