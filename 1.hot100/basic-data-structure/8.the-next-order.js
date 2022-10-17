@@ -20,8 +20,16 @@
  3.如果 nums[cur] < nums[pre] ，说明 cur 到 pre 的比较元素小，将 cur 指向 pre ，更新 pre 的值为 cur+1
  4.如果 nums[cur] > nums[pre] ，说明 cur 到 pre 的比较元素大，将 cur 指向 pre ，更新 pre 的值为 cur-1
  5.此时 pre = cur
+ update:
+ 从后向前查找第一个相邻升序的元素对 (i,j)，满足 A[i] < A[j]。此时 [j,end) 必然是降序
+在 [j,end) 从后向前查找第一个满足 A[i] < A[k] 的 k。A[i]、A[k] 分别就是上文所说的「小数」、「大数」
+将 A[i] 与 A[k] 交换
+可以断定这时 [j,end) 必然是降序，逆置 [j,end)，使其升序
+如果在步骤 1 找不到符合的相邻元素对，说明当前 [begin,end) 为一个降序顺序，则直接跳到步骤 4
+
  */
 var nextPermutation = function(nums) {
+  debugger;
   if (nums.length <= 1) {
       return
   }
