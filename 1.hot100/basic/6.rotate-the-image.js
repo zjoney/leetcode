@@ -8,8 +8,21 @@
 输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
 输出：[[7,4,1],[8,5,2],[9,6,3]]
  */
-var rotate = function(matrix) {
+var rotate = function(matrix) {var rotate = function(matrix) {
+  const n = matrix.length;
+  const matrix_new = new Array(n).fill(0).map(() => new Array(n).fill(0));
+  for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) {
+          matrix_new[j][n - i - 1] = matrix[i][j]; // 翻转之后就是倒数第i行和第i列
 
+      }
+  }
+  for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) {
+          matrix[i][j] = matrix_new[i][j];
+      }
+  }
+};
 };
 const matrix = [[1,2,3],[4,5,6],[7,8,9]];
 console.log(roate(matrix));;
