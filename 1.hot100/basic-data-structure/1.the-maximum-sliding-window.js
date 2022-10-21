@@ -19,8 +19,8 @@
  1、「滑动窗口中的最大值」，使用「单调递减队列来进行解决」.
  2、窗口大小为 k，所以当窗口右端点下标为 r 时，当前窗口最大值的元素下标范围为 [r-k+1, r].
  3、制定「队首」弹出元素的规则，即当「队尾元素的下标 - 队首元素的下标 + 1」大于 k 时，弹出「队首」元素。
- 单调递增查看[imgage/单调栈.gif]
- 单调递减查看[imgage/单调递减.gif]
+ 单调递增查看[image/the-maximum-sliding-window-stack.gif]
+ 单调递减查看[image/the-maximum-sliding-window.gif]
  */
  var maxSlidingWindow = function (nums, k) {
     debugger;

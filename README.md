@@ -7,16 +7,16 @@
 -> 不要使用git bash终端
 -> git add . 命令之后，使用 git cz
 ===================
-![Getting Started](./images/1.不同路径.png)
+![Getting Started](./images/1.different-paths.png)
 
 =============
 
-![Getting Started](./images/2.最小路径之和.jpg)
+![Getting Started](./images/2.sum-of-minimum-path.jpg)
 
 =============
 
-![Getting Started](./images/4.不同路径II.jpg)
+![Getting Started](./images/4.different-pathsII.jpg)
 ==============
-![Getting Started](./images/5.%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88.png)
+![Getting Started](./images/5.telephone-number.png)
 
 顺序：热题HOT100—>精选Top面试题
