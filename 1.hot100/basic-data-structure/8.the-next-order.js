@@ -28,7 +28,7 @@
 如果在步骤 1 找不到符合的相邻元素对，说明当前 [begin,end) 为一个降序顺序，则直接跳到步骤 4
  */
 var nextPermutation = function(nums) {
-  debugger;
+  debugger; 
   if (nums.length <= 1) {
       return
   }
