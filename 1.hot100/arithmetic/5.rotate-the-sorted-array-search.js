@@ -20,9 +20,7 @@
   while (start <= end) {
     const mid = start + ((end - start) >> 1);
     if (nums[mid] === target) return mid;
-
     // [start, mid]有序
-
     // ️⚠️注意这里的等号
     if (nums[mid] >= nums[start]) {
       //target 在 [start, mid] 之间
