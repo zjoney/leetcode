@@ -15,6 +15,7 @@ var dailyTemperatures = function (temperatures) {
   let n = temperatures.length;
   let answer = new Array(n).fill(0);//初始化，假设后续都没出现过更高气温
   let stack = [];
+  debugger
   for (let i = 0; i < n; i++) {//遍历数组确定answer[i]
     while (stack.length && temperatures[i] > temperatures[stack[stack.length - 1]]) {//栈中有元素，且前几天有比当前温度低的情况
       let preIndex = stack.pop();//已经找到比第preIndex天温度高的是哪天了，answer[preIndex]已经确定了，把preIndex从栈里pop出来
