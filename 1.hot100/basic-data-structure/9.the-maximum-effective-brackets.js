@@ -14,3 +14,8 @@
 解释：最长有效括号子串是 "()()"
 
  */
+var longestValidParentheses = function(s) {
+
+};
+const s = '(()(()'
+console.log(longestValidParentheses(s));
