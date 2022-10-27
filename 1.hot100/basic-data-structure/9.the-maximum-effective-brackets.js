@@ -23,10 +23,16 @@ var longestValidParentheses = (s) => {
       stack.push(i);
     } else {              // 遍历到右括号
       stack.pop();        // 栈顶的左括号被匹配，出栈
-      
+      if (stack.length) { // 栈未空
+        const curMaxLen = i - stack[stack.length - 1]; // 计算有效连续长度
+        maxLen = Math.max(maxLen, curMaxLen);          // 挑战最大值
+      } else {            // 栈空了
+        stack.push(i);    // 入栈充当参照
+      }
+    }
   }
   return maxLen;
 };
 
 const s = '(()(()'
-console.log(longestValidParentheses(s)); // 2
+console.log(longestValidParentheses(s)); //2
