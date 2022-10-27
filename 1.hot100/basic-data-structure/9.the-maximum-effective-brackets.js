@@ -3,19 +3,30 @@
  * @summary:32. 最长有效括号
  * 给你一个只包含 '(' 和 ')' 的字符串，找出最长有效（格式正确且连续）括号子串的长度。
  * 示例 1：
-
 输入：s = "(()"
 输出：2
 解释：最长有效括号子串是 "()"
-示例 2：
 
+示例 2：
 输入：s = ")()())"
 输出：4
 解释：最长有效括号子串是 "()()"
 
  */
-var longestValidParentheses = function(s) {
-
+var longestValidParentheses = (s) => {
+  let maxLen = 0;
+  const stack = [];
+  stack.push(-1);
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    if (c == '(') {       // 左括号的索引，入栈
+      stack.push(i);
+    } else {              // 遍历到右括号
+      stack.pop();        // 栈顶的左括号被匹配，出栈
+      
+  }
+  return maxLen;
 };
+
 const s = '(()(()'
-console.log(longestValidParentheses(s));
+console.log(longestValidParentheses(s)); // 2
