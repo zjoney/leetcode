@@ -6,4 +6,15 @@
 例如，先修课程对 [0, 1] 表示：想要学习课程 0 ，你需要先完成课程 1 。
 请你判断是否可能完成所有课程的学习？如果可以，返回 true ；否则，返回 false 。
 
+示例 1：
+输入：numCourses = 2, prerequisites = [[1,0]]
+输出：true
+解释：总共有 2 门课程。学习课程 1 之前，你需要完成课程 0 。这是可能的。
+
+
  */
+var canFinish = function(numCourses, prerequisites) {
+
+};
+const numCourses = 2, prerequisites = [[1,0]]
+console.log(canFinish(numCourses, prerequisites));
