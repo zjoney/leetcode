@@ -36,6 +36,7 @@ var canFinish = (numCourses, prerequisites) => {
     if (inDegree[i] == 0) queue.push(i);
   }
   let count = 0;
+  debugger
   while (queue.length) {
     const selected = queue.shift();           // 当前选的课，出列
     count++;                                  // 选课数+1
