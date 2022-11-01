@@ -21,7 +21,8 @@ var longestValidParentheses = (s) => {
     const c = s[i];
     if (c == '(') {       // 左括号的索引，入栈
       stack.push(i);
-    } else {              // 遍历到右括号
+    } else {    
+      debugger          // 遍历到右括号
       stack.pop();        // 栈顶的左括号被匹配，出栈
       if (stack.length) { // 栈未空
         const curMaxLen = i - stack[stack.length - 1]; // 计算有效连续长度
