@@ -12,3 +12,15 @@
 解释：可以先跳 1 步，从下标 0 到达下标 1, 然后再从下标 1 跳 3 步到达最后一个下标。
 
  */
+ var canJump = function(nums) {
+
+  let end = nums.length - 1;
+
+  for (let i = nums.length - 2; i >= 0; i--) {
+      if (end - i <= nums[i]) {
+          end = i;
+      }
+  }
+
+  return end == 0;
+};
