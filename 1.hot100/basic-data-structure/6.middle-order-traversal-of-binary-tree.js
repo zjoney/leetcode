@@ -26,6 +26,7 @@ var inorderTraversal = function(root) {
 var inorderTraversal2 = function (root) {
   const res = [];
   const stk = [];
+  debugger
   while (root || stk.length) {
     while (root) {
       stk.push(root);
