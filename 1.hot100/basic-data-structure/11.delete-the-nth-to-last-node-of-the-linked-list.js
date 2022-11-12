@@ -17,6 +17,7 @@ var removeNthFromEnd = function (head, n) {
   let temp = null
   n = n-1
   while(quick && n) {
+    debugger
     quick = quick.next
     n--
   }
