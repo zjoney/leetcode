@@ -37,3 +37,5 @@ var removeNthFromEnd = function (head, n) {
   }
   return head
 };
+const head = [1,2,3,4,5], n= 2;
+console.log(removeNthFromEnd(head, n));
