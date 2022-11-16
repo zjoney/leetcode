@@ -30,6 +30,7 @@
  * 查看图片images/merge-K-ascending-lists.jpg
  */
 var mergeKLists = function (lists) {
+  if(!lists.length) return null; // lists为空，直接返回
   return mergeList(lists, 0, lists.length-1)
 }
 
