@@ -34,9 +34,13 @@ var mergeKLists=function(){
 }
 
 function mergeList(lists, start, end) {
-
+  const mid = start + ((end - start) >> 1); // 找到中点，然后下面继续进行递归分割成左右两部分
+  const leftList = mergeList(lists, start, mid);
+  const rightList = mergeList(lists, mid + 1, end);
+  return merge(leftList, rightList); // 进行合并
 }
-function merge(start, end){
+// 基本算法，合并两个有序链表
+function merge(head1, head2){
 
 }
 // 解题1
