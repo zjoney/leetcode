@@ -48,7 +48,14 @@ function mergeList(lists, start, end) {
 function merge(head1, head2) {
   let newHead = new ListNode(0), p = newHead;
   while (head1 && head2) {
-
+    if (head1.val <= head2.val) {
+      p.next = head1;
+      head1 = head1.next;
+    } else {
+      p.next = head2;
+      head2 = head2.next;
+    }
+    p = p.next
   }
   // 没遍历完，接上即可
   p.next = head1 ? head1 : head2
