@@ -46,7 +46,13 @@ function mergeList(lists, start, end) {
 }
 // 基本算法，合并两个有序链表
 function merge(head1, head2) {
+  let newHead = new ListNode(0), p = newHead;
+  while (head1 && head2) {
 
+  }
+  // 没遍历完，接上即可
+  p.next = head1 ? head1 : head2
+  return newHead.next;
 }
 // 解题1
 // var mergeKLists = function(lists) {
