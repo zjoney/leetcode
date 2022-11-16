@@ -29,18 +29,23 @@
  * 
  * 查看图片images/merge-K-ascending-lists.jpg
  */
-var mergeKLists=function(){
+var mergeKLists = function () {
 
 }
 
 function mergeList(lists, start, end) {
+  // 如果 start === end 说明分治的分到头了，只剩一个元素了，直接返回即可
+  if (start === end) {
+    return lists[start];
+  }
+
   const mid = start + ((end - start) >> 1); // 找到中点，然后下面继续进行递归分割成左右两部分
   const leftList = mergeList(lists, start, mid);
   const rightList = mergeList(lists, mid + 1, end);
   return merge(leftList, rightList); // 进行合并
 }
 // 基本算法，合并两个有序链表
-function merge(head1, head2){
+function merge(head1, head2) {
 
 }
 // 解题1
@@ -66,5 +71,5 @@ function merge(head1, head2){
 
 //   return res.next;
 // };
-console.log(mergeKLists([[1,4,5],[1,3,4],[2,6]])); // 1->1->2->3->4->4->5->6
+console.log(mergeKLists([[1, 4, 5], [1, 3, 4], [2, 6]])); // 1->1->2->3->4->4->5->6
 
