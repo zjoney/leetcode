@@ -29,8 +29,8 @@
  * 
  * 查看图片images/merge-K-ascending-lists.jpg
  */
-var mergeKLists = function () {
-
+var mergeKLists = function (lists) {
+  return mergeList(lists, 0, lists.length-1)
 }
 
 function mergeList(lists, start, end) {
@@ -38,7 +38,6 @@ function mergeList(lists, start, end) {
   if (start === end) {
     return lists[start];
   }
-
   const mid = start + ((end - start) >> 1); // 找到中点，然后下面继续进行递归分割成左右两部分
   const leftList = mergeList(lists, start, mid);
   const rightList = mergeList(lists, mid + 1, end);
