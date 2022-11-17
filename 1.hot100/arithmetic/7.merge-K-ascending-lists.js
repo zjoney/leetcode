@@ -74,7 +74,7 @@ function merge(head1, head2) {
   p.next = head1 ? head1 : head2
   return newHead.next;
 }
-// 解题1
+// 方式一
 // var mergeKLists = function(lists) {
 //   function transform(l, arr) {
 //       while(l) {
