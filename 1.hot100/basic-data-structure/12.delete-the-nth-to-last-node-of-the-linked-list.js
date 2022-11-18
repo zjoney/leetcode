@@ -8,6 +8,7 @@
  * 输入：head = [1,2,3,4,5], n = 2
 输出：[1,2,3,5]
  */
- var removeNthFromEnd = function(head, n) {
-
+var removeNthFromEnd = function (head, n) {
+  
 };
+
