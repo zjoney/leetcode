@@ -35,3 +35,5 @@ var combinationSum = function(candidates, target) {
   dfs(target, [], 0);
   return ans;
 };
+const candidates = [2,3,6,7], target = 7
+console.log(combinationSum(candidates, target))
