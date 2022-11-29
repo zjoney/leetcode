@@ -10,3 +10,21 @@ k 是一个正整数，它的值小于或等于链表的长度。如果节点总
 输出：[2,1,4,3,5]
 
  */
+var reverseKGroup = function (head, k) {
+  
+  let newHead = reverse(start, end); // 左闭右开区间
+  start.next = reverseKGroup(end, k); 
+  return newHead;
+};
+
+// 反转区间 [a, b) 的元素，注意是左闭右开
+function reverse (head, end) {
+ let p = head, q, newHead; // p 在前面，q 跟在 p 的后面
+ while(p !== end) {
+     q = p; // q 赋值会原链表 p 的位置
+     p = p.next; // p 继续向后遍历
+     q.next = newHead;
+     newHead = q;
+ }
+ return newHead;
+};
