@@ -13,7 +13,7 @@ k 是一个正整数，它的值小于或等于链表的长度。如果节点总
 var reverseKGroup = function (head, k) {
   
   let newHead = reverse(start, end); // 左闭右开区间
-  start.next = reverseKGroup(end, k); 
+  start.next = reverseKGroup(end, k); // 翻转以后，原本的 start 指向的结点，变到了 end 的前一个，直接 start.next 继续递归翻转后续的就行
   return newHead;
 };
 
