@@ -39,3 +39,5 @@ function reverse (head, end) {
  }
  return newHead;
 };
+const head = [1,2,3,4,5], k = 2;
+console.log(reverseKGroup(head, k));
