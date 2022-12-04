@@ -25,9 +25,15 @@
 解析得到整数 42 。
 由于 "42" 在范围 [-2^31, 2^31 - 1] 内，最终结果为 42 。
  */
- var myAtoi = function(s) {
-  const re = new RegExp(/^(-|\+)?\d+/);
-  let str = s.trim().match(re);
-  let res = str ? Number(str[0]) : 0;
-  return res >= 0 ? Math.min(res, 2**31 - 1) : Math.max(res, -(2**31))
-};
+// https://leetcode.cn/problems/string-to-integer-atoi/solutions/184340/javascripttou-ji-qu-qiao-wu-xu-si-kao-yi-kan-jiu-h/?languageTags=javascript
+// 数学思想
+var myAtoi = function () {
+
+}
+// 常规解题
+//  var myAtoi = function(s) {
+//   const re = new RegExp(/^(-|\+)?\d+/);
+//   let str = s.trim().match(re);
+//   let res = str ? Number(str[0]) : 0;
+//   return res >= 0 ? Math.min(res, 2**31 - 1) : Math.max(res, -(2**31))
+// };
