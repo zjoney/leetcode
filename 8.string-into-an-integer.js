@@ -32,6 +32,15 @@ if (number < Math.pow(-2, 31) || number > Math.pow(2, 31) - 1) {
     return number < Math.pow(-2, 31) ? Math.pow(-2, 31) : Math.pow(2, 31) - 1;
 }
 
+其他情况返回0
+if(isNaN(number)) {
+    return 0;
+} 
+
+小细节
+如果字符串 string 以"0x"或者"0X"开头, 则基数是16 (16进制).
+如果字符串 string 以"0"开头, 基数是8（八进制）或者10（十进制），那么具体是哪个基数，取决与ECMAScript的版本。
+
  */
 var myAtoi = function (str) {
   const number = parseInt(str, 10);
