@@ -6,28 +6,7 @@
 路径 不需要从根节点开始，也不需要在叶子节点结束，但是路径方向必须是向下的（只能从父节点到子节点）。
 查看images/pathsumIII.jpg
  */
-/**
-*方法一：
- *首先定义 rootSum(p,val)\textit{rootSum}(p,\textit{val})rootSum(p,val) 表示以节点 ppp 为起点向下且满足路径总和为 valvalval 的路径数目
- *对节点 ppp 求 rootSum(p,targetSum)\textit{rootSum}(p,\textit{targetSum})rootSum(p,targetSum) 时
- *左孩子节点pl求出 rootSum(pl,targetSum−val)，右孩子节点pr=rootSum(pr,targetSum−val)
- */
-var pathSum = function(root, targetSum) {
-  if(!root) return 0
-  let curNode = dfs(root,targetSum)
-  let leftNode = pathSum(root.left,targetSum)
-  let rightNode = pathSum(root.right,targetSum)
-  return curNode+leftNode+rightNode
-}
 
-const dfs = function(root,targetSum){
-  if(!root) return 0
-  let res = 0
-  if(root.val===targetSum) res++
-  res+=dfs(root.left,targetSum-root.val)
-  res+=dfs(root.right,targetSum-root.val)
-  return res
-}
 /**
  * 方法2：前缀和Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -58,3 +37,26 @@ const dfs = (root, map, cur, targetSum) => {//先序遍历
   map.set(cur, (map.get(cur) || 0) - 1);//能执行到这说明此节点的子节点都遍历完了，要减去经过此节点得到的前缀和，避免对其它节点的子节点计算造成影响
   return res; 
 }
+
+/**
+*方法一：
+ *首先定义 rootSum(p,val)\textit{rootSum}(p,\textit{val})rootSum(p,val) 表示以节点 ppp 为起点向下且满足路径总和为 valvalval 的路径数目
+ *对节点 ppp 求 rootSum(p,targetSum)\textit{rootSum}(p,\textit{targetSum})rootSum(p,targetSum) 时
+ *左孩子节点pl求出 rootSum(pl,targetSum−val)，右孩子节点pr=rootSum(pr,targetSum−val)
+ */
+// var pathSum = function(root, targetSum) {
+//   if(!root) return 0
+//   let curNode = dfs(root,targetSum)
+//   let leftNode = pathSum(root.left,targetSum)
+//   let rightNode = pathSum(root.right,targetSum)
+//   return curNode+leftNode+rightNode
+// }
+
+// const dfs = function(root,targetSum){
+//   if(!root) return 0
+//   let res = 0
+//   if(root.val===targetSum) res++
+//   res+=dfs(root.left,targetSum-root.val)
+//   res+=dfs(root.right,targetSum-root.val)
+//   return res
+// }
