@@ -9,3 +9,6 @@
 输出：true
 
  */
+var exist = function(board, word) {
+
+};
