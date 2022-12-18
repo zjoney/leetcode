@@ -19,6 +19,7 @@ p = "a"
 解释: "a" 无法匹配 "aa" 整个字符串。
 
  */
-var isMatch = function(s, p) {
+var isMatch 
+= function(s, p) {
 
 };
