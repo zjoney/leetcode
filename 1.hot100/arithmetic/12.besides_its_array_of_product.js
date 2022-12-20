@@ -11,5 +11,15 @@
 输出: [24,12,8,6]
  */
 var productExceptSelf = function(nums) {
-
+  let pro = 1,
+      res = [];
+  for(let i = nums.length - 1; i >= 0; i--){
+      if(i == nums.length - 1) res[i] = 1;
+      else res[i] = nums[i + 1] * res[i + 1];
+  }
+  for(let i = 0; i < nums.length; i++){
+      res[i] = pro * res[i];
+      pro *= nums[i];
+  }
+  return res;
 };
