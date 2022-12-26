@@ -17,6 +17,7 @@ images/searchgrid2.jpeg
  * @param {number[][]} matrix
  * @param {number} target
  * @return {boolean}
+ * images/search_image.png
  */
  var searchMatrix = function(matrix, target) {
   let m = matrix.length;
