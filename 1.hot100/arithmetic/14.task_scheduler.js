@@ -12,6 +12,28 @@
 解释：A -> B -> (待命) -> A -> B -> (待命) -> A -> B
      在本示例中，两个相同类型任务之间必须间隔长度为 n = 2 的冷却时间，而执行一个任务只需要一个单位时间，所以中间出现了（待命）状态。 
  */
-var leastInterval = function (tasks, n) {
-
-};
+     var leastInterval = function(tasks, n) {
+      const len = tasks.length;
+      if(n === 0) {return len}
+  
+      const letterNum = {};
+      tasks.forEach(item => {
+          if(letterNum[item]) {
+              letterNum[item] += 1
+          } else {
+              letterNum[item] = 1
+          }
+      });
+      let maxNum=0,maxCount=1;
+      for(let val in letterNum) {
+          if(maxNum === letterNum[val]) {
+              maxCount += 1;
+          } else if(maxNum < letterNum[val]){
+              maxNum = letterNum[val];
+              maxCount = 1
+          }
+      }
+  
+      return Math.max((n+1)*(maxNum-1)+maxCount, len)
+      
+  };
