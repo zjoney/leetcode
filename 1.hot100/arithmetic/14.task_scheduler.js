@@ -37,3 +37,5 @@
       return Math.max((n+1)*(maxNum-1)+maxCount, len)
       
   };
+  const tasks = ["A","A","A","B","B","B"], n = 2
+  console.log(leastInterval(tasks, n))
