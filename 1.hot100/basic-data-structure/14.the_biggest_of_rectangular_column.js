@@ -28,3 +28,5 @@ const largestRectangleArea = (heights) => {
   }
   return maxArea
 }
+const heights = [2,1,5,6,2,3]
+console.log(largestRectangleArea(heights))
