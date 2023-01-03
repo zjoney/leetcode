@@ -22,13 +22,40 @@ countAndSay(n) 是对 countAndSay(n-1) 的描述，然后转换成另一个数�
 要 描述 一个数字字符串，首先要将字符串分割为 最小 数量的组，每个组都由连续的最多 相同字符 组成。然后对于每个组，先描述字符的数量，然后描述字符，形成一个描述组。要将描述转换为数字字符串，先将每组中的字符数量用数字替换，再将所有描述组连接起来。
 
 例如，数字字符串 "3322251" 的描述如下图：
-images/apperance.png
+images/appearance.png
 示例 1：
 
 输入：n = 1
 输出："1"
 解释：这是一个基本样例。
  */
-var countAndSay = function(n) {
-
-};
+var countAndSay = function (n) {
+  if (n === 1) {
+    return '1'
+  };
+  let str = '1';
+  let flag = 1;
+  let result = '';
+  while (flag < n) {
+    result = ''; // 这里需要每次进循环的时候把result置为空
+    let chart = str.charAt(0);
+    let count = 1;
+    for (let i = 1; i < str.length; i++) {
+      if (str[i] === chart) {
+        count++
+      } else {
+        result = result.concat(count);
+        result = result.concat(chart);
+        count = 1;
+        chart = str[i];
+      }
+    }
+    result = result.concat(count);
+    result = result.concat(chart);
+    str = result; // 更新str的置
+    flag++;
+  }
+  console.log('result', result)
+  return result;
+}
+countAndSay(4)
