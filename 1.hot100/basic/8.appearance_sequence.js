@@ -29,33 +29,68 @@ images/appearance.png
 输出："1"
 解释：这是一个基本样例。
  */
-var countAndSay = function (n) {
-  if (n === 1) {
-    return '1'
-  };
-  let str = '1';
-  let flag = 1;
-  let result = '';
-  while (flag < n) {
-    result = ''; // 这里需要每次进循环的时候把result置为空
-    let chart = str.charAt(0);
-    let count = 1;
-    for (let i = 1; i < str.length; i++) {
-      if (str[i] === chart) {
-        count++
+/**
+ * 方法一：
+ */
+// var countAndSay = function (n) {
+//   if (n === 1) {
+//     return '1'
+//   };
+//   let str = '1';
+//   let flag = 1;
+//   let result = '';
+//   while (flag < n) {
+//     result = ''; // 这里需要每次进循环的时候把result置为空
+//     let chart = str.charAt(0);
+//     let count = 1;
+//     for (let i = 1; i < str.length; i++) {
+//       if (str[i] === chart) {
+//         count++
+//       } else {
+//         result = result.concat(count);
+//         result = result.concat(chart);
+//         count = 1;
+//         chart = str[i];
+//       }
+//     }
+//     result = result.concat(count);
+//     result = result.concat(chart);
+//     str = result; // 更新str的置
+//     flag++;
+//   }
+//   console.log('result', result)
+//   return result;
+// }
+/**
+ * 方法二：
+ */
+ var countAndSay = function(n) {
+  let cache = [, '1']
+
+  // 通过第n-1项字符串计算出第n项字符串
+  let calcStr = s => {
+    let activeNum = s[0]
+    let times = 1
+    let res = ''
+    for (let i = 1; i <= s.length; i++) {
+      let v = s[i]
+      if (activeNum !== v) {
+        res = res + times + activeNum
+        times = 1
+        activeNum = v
       } else {
-        result = result.concat(count);
-        result = result.concat(chart);
-        count = 1;
-        chart = str[i];
+        activeNum = v
+        times++
       }
     }
-    result = result.concat(count);
-    result = result.concat(chart);
-    str = result; // 更新str的置
-    flag++;
+
+    return res
   }
-  console.log('result', result)
-  return result;
+
+  for (let i = 2; i <= n; i++) {
+    cache[i] = calcStr(cache[i - 1])
+  }
+console.log('cache[n]', cache[n])
+  return cache[n]
 }
 countAndSay(4)
