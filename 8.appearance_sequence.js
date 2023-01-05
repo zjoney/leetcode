@@ -65,10 +65,12 @@ images/appearance.png
  * 方法二：
  */
  var countAndSay = function(n) {
+  
   let cache = [, '1']
 
   // 通过第n-1项字符串计算出第n项字符串
   let calcStr = s => {
+    debugger
     let activeNum = s[0]
     let times = 1
     let res = ''
