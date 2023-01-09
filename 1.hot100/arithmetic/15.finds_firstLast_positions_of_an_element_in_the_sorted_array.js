@@ -9,43 +9,16 @@
 你必须设计并实现时间复杂度为 O(log n) 的算法解决此问题。
  */
 var searchRange = function(nums, target) {
-  let ans = [-1, -1],
-      len = nums.length,
-      left = 0,
-      right = len - 1;
-  
-  // 迭代查找右边界
-  while (left <= right) {
-    let mid = left + Math.floor((right - left) / 2);
-    
-    if (nums[mid] === target && (mid === len - 1 || nums[mid + 1] > target)) {
-      ans[1] = mid;
-      break;
-    }
-    
-    if (nums[mid] <= target) {
-      left = mid + 1;
-    } else {
-      right = mid - 1;
-    }
+  let left = 0, right = nums.length - 1, mid;
+  while (left <= right) {//二分查找target
+      mid = (left + right) >> 1;
+      if (nums[mid] === target) break;
+      if (nums[mid] > target) right = mid - 1;
+      else left = mid + 1;
   }
-  
-  // 迭代查找左边界
-  left = 0;
-  while (left <= right) {
-    let mid = left + Math.floor((right - left) / 2);
-    
-    if (nums[mid] === target && (mid === 0 || nums[mid - 1] < target)) {
-      ans[0] = mid;
-      break;
-    }
-    
-    if (nums[mid] >= target) {
-      right = mid - 1;
-    } else {
-      left = mid + 1;
-    }
-  }
-  
-  return (ans[0] === -1 || ans[1] === -1) ? [-1, -1] : ans;
+  if(left > right) return [-1, -1];
+  let i = mid, j = mid;
+  while(nums[i] === nums[i - 1]) i--;//向左尝试找相同的元素
+  while(nums[j] === nums[j + 1]) j++;//向右尝试找相同的元素
+  return [i, j];
 };
