@@ -8,7 +8,7 @@
 
 给你一个二叉树的根节点 root ，返回其 最大路径和 
 示例 1：
-images/exx1.jpeg
+images/maximum_path.jpeg
 输入：root = [1,2,3]
 输出：6
 解释：最优路径是 2 -> 1 -> 3 ，路径和为 2 + 1 + 3 = 6
