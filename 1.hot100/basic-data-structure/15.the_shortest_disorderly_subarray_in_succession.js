@@ -12,5 +12,9 @@
 
  */
 var findUnsortedSubarray = function(nums) {
-
+  var stack = [];
+    var start = Infinity;
+    var end = -1;
+    var max = -Infinity;
+    
 };
