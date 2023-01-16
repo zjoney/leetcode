@@ -16,5 +16,10 @@ var findUnsortedSubarray = function(nums) {
     var start = Infinity;
     var end = -1;
     var max = -Infinity;
-    
+    for (var i=0; i<nums.length; i++) {
+      
+      // 当前值小于已发现的max，end改为当前
+      if (nums[i] < max) end = i;
+      stack.push(i);
+  }
 };
