@@ -8,4 +8,8 @@
 节点的右子树仅包含键 大于 节点键的节点。
 左右子树也必须是二叉搜索树。
 
+如图 images/convert_BST_to_greater_tree.png
+输入：[4,1,6,0,2,5,7,null,null,null,3,null,null,null,8]
+输出：[30,36,21,36,35,26,15,null,null,null,33,null,null,null,8]
+
  */
