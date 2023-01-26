@@ -13,3 +13,24 @@
 输出：[30,36,21,36,35,26,15,null,null,null,33,null,null,null,8]
 
  */
+// 逆向中序遍历，左中右->右中左
+// 节点的值等于它自己加上它的前一个节点的值【逆向】
+var convertBST = function(root) {
+  if(!root) return null;
+  let stack = [];
+  let node = root;
+  let prenode = null;
+  while(node || stack.length) {
+      while(node) {
+          stack.push(node)
+          node = node.right;
+      }
+      node = stack.pop();
+      if(prenode) {
+          node.val += prenode.val;
+      }
+      prenode = node;
+      node = node.left;
+  }
+  return root;
+};
