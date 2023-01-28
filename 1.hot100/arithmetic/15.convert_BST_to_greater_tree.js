@@ -34,3 +34,5 @@ var convertBST = function(root) {
   }
   return root;
 };
+const root =[4,1,6,0,2,5,7,null,null,null,3,null,null,null,8]
+console.log(convertBST(root))
