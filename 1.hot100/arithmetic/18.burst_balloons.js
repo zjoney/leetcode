@@ -14,4 +14,23 @@ nums = [3,1,5,8] --> [3,5,8] --> [3,8] --> [8] --> []
 coins =  3*1*5    +   3*5*8   +  1*3*8  + 1*8*1 = 167
  */
  var maxCoins = function (nums) {
+
+  const n = nums.length;
+  let points = [1, ...nums, 1]; //在数组添加虚拟气球 *1还是本身
+  const dp = Array.from(Array(n + 2), () => Array(n + 2).fill(0)); //初始化状态数组
+  //循环i，j
+  for (let i = n; i >= 0; i--) {
+      for (let j = i + 1; j < n + 2; j++) {
+          for (let k = i + 1; k < j; k++) {
+              //枚举k在i和j中的所有可能
+              //i-j能获得的最大数量的金币等于 戳破当前的气球获得的金钱加上之前i-k,k-j区间中已经获得的金币
+              dp[i][j] = Math.max(
+                  //用最大值更新dp[i][j]
+                  dp[i][j],
+                  dp[i][k] + dp[k][j] + points[j] * points[k] * points[i]
+              );
+          }
+      }
+  }
+  return dp[0][n + 1];
 };
