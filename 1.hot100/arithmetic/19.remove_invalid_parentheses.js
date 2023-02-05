@@ -10,6 +10,7 @@
 输出：["(())()","()()()"]
  */
 var removeInvalidParentheses = function (s) {
+    debugger
     const n = s.length;
     // 记录最大有效括号数量
     let count = 0;
