@@ -50,5 +50,8 @@ var removeInvalidParentheses = function (s) {
         }
     }
     dfs(0, 0, 0, '');
+    console.log([...set])
     return [...set];
 };
+const s = "()())()"
+removeInvalidParentheses(s); // ["(())()","()()()"]
