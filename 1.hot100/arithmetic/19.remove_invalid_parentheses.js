@@ -39,6 +39,7 @@ var removeInvalidParentheses = function (s) {
 
     // 判定当前括号排列是否合法
     function isValid(s){
+        debugger
         let cnt=0;
 
         for(const c of s){
@@ -98,5 +99,7 @@ var removeInvalidParentheses = function (s) {
 //     console.log([...set])
 //     return [...set];
 // };
-const s = "()())()"
+// const s = "()())()"
+const s = ")())()"
+// const s = "()())("
 removeInvalidParentheses(s); // ["(())()","()()()"]
