@@ -19,7 +19,7 @@
  var findDuplicate = function(nums) {
   let map = new Map();
   for(let i = 0;i<nums.length;i++) {
-      if(map.has(nums[i])){
+      if(map.has(nums[i])){ // 通过键值Key  找到对应的值，如果存在就返回
           return nums[i];
       }else {
           map.set(nums[i],1);
