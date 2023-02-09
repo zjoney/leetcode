@@ -6,7 +6,7 @@
  * 如图images/remove_nth_link.jpg
  * 示例一：
  * 输入：head = [1,2,3,4,5], n = 2
-输出：[1,2,3,5]
+ * 输出：[1,2,3,5]
  */
 var removeNthFromEnd = function(head, n) {
   let ret = new ListNode(0, head),

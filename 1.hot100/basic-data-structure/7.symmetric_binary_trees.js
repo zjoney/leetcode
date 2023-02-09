@@ -6,7 +6,7 @@
  * images/7.symmetric_binary_trees.jpg
  * 示例：
  * 输入：root = [1,2,2,3,4,4,3]
-输出：true
+ * 输出：true
  */
 const check = (p, q) => {
   if (!p && !q) return true;
