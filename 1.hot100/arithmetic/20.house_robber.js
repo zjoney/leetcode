@@ -33,3 +33,6 @@ var rob = function (nums) {
 
     return dp[n - 1];
 };
+const nums = [1,2,3,1]
+const res = rob(nums)
+console.log(res)
