@@ -1,5 +1,5 @@
 /**
- * 考察:动态规划
+ * 考察:动态规划、dfs 深度遍历
  * @difficulty 中等
  * @summary 494. 目标和
  * 给你一个整数数组 nums 和一个整数 target 。向数组中的每个整数前添加 '+' 或 '-' ，然后串联起所有整数，
@@ -17,6 +17,24 @@
  * +1 + 1 + 1 - 1 + 1 = 3
  * +1 + 1 + 1 + 1 - 1 = 3
  */
- var findTargetSumWays = function(nums, target) {
 
+/**
+ * 方法1： dfs 深度遍历
+ */
+ var findTargetSumWays = function(nums, S) {
+  // 方法1：深度遍历
+  let count = 0;
+  function dfs(i, res) {
+      if(i === nums.length) {
+          if(res === S) {
+              count++;
+          }
+          return;
+      };
+      dfs(i+1, res+nums[i]);
+      dfs(i+1, res-nums[i]);
+  }
+  dfs(1, nums[0]);
+  dfs(1, -nums[0]);
+  return count;
 };
