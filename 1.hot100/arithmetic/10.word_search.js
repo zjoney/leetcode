@@ -22,6 +22,7 @@
   let n = board.length;
   let m = board[0].length;
   let wLen = word.length;
+  debugger
   const findWord = (i, j, curLen) => {//进行深度优先搜索
       if(curLen === wLen) return true;//已经检查完word字符，说明全部符合
       if(i >= n || j >= m || i < 0 || j < 0) return false;//数组越界
