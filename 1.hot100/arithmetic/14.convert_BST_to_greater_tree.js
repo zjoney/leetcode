@@ -21,6 +21,7 @@ var convertBST = function(root) {
   let stack = [];
   let node = root;
   let prenode = null;
+  debugger
   while(node || stack.length) {
       while(node) {
           stack.push(node)
