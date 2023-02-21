@@ -16,6 +16,7 @@
 const letterCombinations = (digits) => {
   if (digits.length == 0) return [];
   const res = [];
+  debugger
   const map = { '2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz' };
   // dfs: 当前构建的字符串为curStr，现在“翻译”到第i个数字，基于此继续“翻译”
   const dfs = (curStr, i) => {   // curStr是当前字符串，i是扫描的指针
