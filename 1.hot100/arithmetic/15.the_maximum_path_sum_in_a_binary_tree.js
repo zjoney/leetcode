@@ -18,7 +18,7 @@ const maxPathSum = (root) => {
   let maxSum = Number.MIN_SAFE_INTEGER; // 最大路径和
 
   const dfs = (root) => {
-    
+    debugger
     if (root == null) { // 遍历到null节点，收益0
       return 0;
     }
