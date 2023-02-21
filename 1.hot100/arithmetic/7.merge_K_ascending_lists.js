@@ -70,6 +70,7 @@ function merge(head1, head2) {
     }
     p = p.next
   }
+  
   // 没遍历完，接上即可
   p.next = head1 ? head1 : head2
   return newHead.next;
