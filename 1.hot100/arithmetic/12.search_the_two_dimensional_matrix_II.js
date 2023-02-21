@@ -19,6 +19,7 @@
  * images/search_image.png
  */
  var searchMatrix = function(matrix, target) {
+    debugger
   let m = matrix.length;
   let n = matrix[0].length;
   for(let i = m - 1, j = 0; i >= 0 && j < n;) {
