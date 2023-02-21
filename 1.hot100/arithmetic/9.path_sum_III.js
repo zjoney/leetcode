@@ -28,6 +28,7 @@
 const dfs = (root, map, cur, targetSum) => {//先序遍历
   if(root === null) return 0;
   let res = 0;
+  debugger
   cur += root.val;//更新当前路径前缀和
   res += map.get(cur - targetSum) || 0;//判断节点值之和等于targetSum = 判断两个节点路径差等于targetSum = 如果当前结点前缀和等于cur,那么另外一个节点前缀和为 cur - targetSum
   map.set(cur, (map.get(cur) || 0) + 1);//给前缀和为cur的情况计数加1
