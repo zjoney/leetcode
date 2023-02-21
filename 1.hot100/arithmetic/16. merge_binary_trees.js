@@ -11,7 +11,6 @@
  * 示例1：images/merge_binary_tree.jpg
  * 输入：root1 = [1,3,2,5], root2 = [2,1,3,null,4,null,7]
  * 输出：[3,4,5,5,4,null,7]
-
  */
 /**
  * DFS
