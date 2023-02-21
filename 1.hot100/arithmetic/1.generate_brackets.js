@@ -26,7 +26,7 @@ var generateParenthesis = function (n) {
       dfs(lRemain, rRemain - 1, str + ")"); // 然后继续做选择（递归）
     }
   };
-  debugger;
+  
   dfs(n, n, ""); // 递归的入口，剩余数量都是n，初始字符串是空串
   return res;
 };
