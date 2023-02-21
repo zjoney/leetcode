@@ -15,7 +15,6 @@
 var removeInvalidParentheses = function (s) {
     
     // BFS广度优先,注意题目中只删除最少括号
-
     // s在任意位置删除一个括号字符，则形成新的层级
     // 最坏情况就是O(2^len),但是会在删除若干字符后退出
     let level=new Set();
@@ -33,7 +32,6 @@ var removeInvalidParentheses = function (s) {
                     next_level.add(str.slice(0,i)+str.slice(i+1))
             }
         }
-
         level=next_level;
     }
 
