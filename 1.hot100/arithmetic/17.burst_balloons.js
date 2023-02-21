@@ -27,6 +27,7 @@
   for (let i = 1; i <= n; i++) {
     points[i] = nums[i - 1];
   }
+  debugger
   // base case 已经都被初始化为 0
   let dp = new Array(n + 2).fill(0).map(() => new Array(n + 2).fill(0));
   // 开始状态转移
