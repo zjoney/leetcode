@@ -21,7 +21,7 @@ p[j-1]p[j−1] 不是星号，那就真的不匹配了
  */
 const isMatch = (s, p) => {
   if (s == null || p == null) return false;
-
+  debugger
   const sLen = s.length, pLen = p.length;
 
   const dp = new Array(sLen + 1);
