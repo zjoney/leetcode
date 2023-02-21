@@ -17,30 +17,30 @@
 题目理解：
 
  */
-     var leastInterval = function(tasks, n) {
-      const len = tasks.length;
-      if(n === 0) {return len}
-  
-      const letterNum = {};
-      tasks.forEach(item => {
-          if(letterNum[item]) {
-              letterNum[item] += 1
-          } else {
-              letterNum[item] = 1
-          }
-      });
-      let maxNum=0,maxCount=1;
-      for(let val in letterNum) {
-          if(maxNum === letterNum[val]) {
-              maxCount += 1;
-          } else if(maxNum < letterNum[val]){
-              maxNum = letterNum[val];
-              maxCount = 1
-          }
-      }
-  
-      return Math.max((n+1)*(maxNum-1)+maxCount, len)
-      
-  };
-  const tasks = ["A","A","A","B","B","B"], n = 2
-  console.log(leastInterval(tasks, n))
+var leastInterval = function (tasks, n) {
+    const len = tasks.length;
+    if (n === 0) { return len }
+
+    const letterNum = {};
+    tasks.forEach(item => {
+        if (letterNum[item]) {
+            letterNum[item] += 1
+        } else {
+            letterNum[item] = 1
+        }
+    });
+    let maxNum = 0, maxCount = 1;
+    for (let val in letterNum) {
+        if (maxNum === letterNum[val]) {
+            maxCount += 1;
+        } else if (maxNum < letterNum[val]) {
+            maxNum = letterNum[val];
+            maxCount = 1
+        }
+    }
+
+    return Math.max((n + 1) * (maxNum - 1) + maxCount, len)
+
+};
+const tasks = ["A", "A", "A", "B", "B", "B"], n = 2
+console.log(leastInterval(tasks, n))
