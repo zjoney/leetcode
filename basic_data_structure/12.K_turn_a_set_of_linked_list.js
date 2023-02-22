@@ -9,7 +9,7 @@
  * 输入：head = [1,2,3,4,5], k = 2
  * 输出：[2,1,4,3,5]
  */
-var reverseKGroup = function (head, k) {
+var reverseKGroup = function (head, k) {debugger
     if (!head) return null;
     let start = head, end = head;
     debugger
