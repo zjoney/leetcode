@@ -33,6 +33,7 @@ var nextPermutation = function(nums) {
       return
   }
   let leftHand
+  debugger; 
   for (let i = nums.length - 2; i >= 0; i--) {
       if (nums[i] < nums[i + 1]) {
           leftHand = i
