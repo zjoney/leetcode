@@ -18,6 +18,7 @@
  */
  var uniquePaths = function(m, n){
   // 1定义数组含义
+  debugger
   let dp = new Array(m).fill(0).map(() => new Array(n).fill(0));
   // 2 找出关系数组元素间的关系式
   for (let j = 0; j < n; j++) dp[0][j] = 1;
