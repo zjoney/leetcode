@@ -12,8 +12,8 @@
  * 3、给每一个key值升序转字符串，每一个value放在数组list
  */
 var groupAnagrams = function (strs) {
-  debugger;
-  const map = new Map();
+  
+  const map = new Map();debugger;
   for (let str of strs) {
     let array = Array.from(str);
     array.sort();
