@@ -22,6 +22,7 @@
 
 var solution = function (isBadVersion) {
   return function (n) {
+    debugger
     let left = 1, right = n;
     while (left < right) { // 循环直至区间左右端点相同
       const mid = Math.floor(left + (right - left) / 2); // 防止计算时溢出
