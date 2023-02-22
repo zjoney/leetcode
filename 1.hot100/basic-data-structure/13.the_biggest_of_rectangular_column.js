@@ -13,6 +13,7 @@
 const largestRectangleArea = (heights) => {
   let maxArea = 0
   const stack = [] //单调递增栈 注意栈存的时下标
+  debugger
   heights = [0, ...heights, 0]    //在heights数组前后增加两个哨兵 用来清零单调递增栈里的元素   
   for (let i = 0; i < heights.length; i++) {
       //当前元素对应的高度小于栈顶元素对应的高度时
