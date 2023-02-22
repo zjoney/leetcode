@@ -21,6 +21,7 @@ var threeSum = function(nums) {
   if (nums.length < 3) {
     return [];
   }
+  debugger
   // 从小到大排序
   const arr = nums.sort((a,b) => a-b);
   // 最小值大于 0 或者 最大值小于 0，说明没有无效答案
