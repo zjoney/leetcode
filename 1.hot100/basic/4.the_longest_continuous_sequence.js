@@ -15,7 +15,7 @@
 
  */
 var longestConsecutive = function (nums) {
-  debugger;
+   debugger;
   //  把题目中数组的数字全部放入set中，一来去重，二来方便快速查找；
   let num_set = new Set();
   for (const num of nums) {
