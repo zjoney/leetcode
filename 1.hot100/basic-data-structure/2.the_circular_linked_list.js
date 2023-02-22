@@ -15,6 +15,7 @@
  */
 var hasCycle = (head) => {
     let map = new Map();
+    debugger
     while (head) {
         if (map.has(head)) return true;//如果当前节点在map中存在就说明有环
         map.set(head, true);//否则就加入map
