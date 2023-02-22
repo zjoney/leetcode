@@ -19,7 +19,7 @@ const minPathSum = function(arr){
   let m = arr.length;
   let n = arr[0].length;
   if (m <= 0 || n <= 0) return 0;
-
+ debugger
   const dp = new Array(m).fill(0).map(() => new Array(0).fill(n)); // 
   // 初始化
   dp[0][0] = arr[0][0];
