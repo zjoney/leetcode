@@ -13,4 +13,15 @@
  * 返回 3, 它的长度是路径 [4,2,1,3] 或者 [5,2,1,3]。
  */
 var diameterOfBinaryTree = function (root) {
+        if (root == null || (root.left == null && root.right == null)) return 0
+        let res = 0
+        function dfs(root) {
+                if (root == null) return 0
+                let left = dfs(root.left)
+                let right = dfs(root.right)
+                res = Math.max(res, left + right + 1)
+                return Math.max(left, right) + 1
+        }
+        dfs(root)
+        return res - 1
 };

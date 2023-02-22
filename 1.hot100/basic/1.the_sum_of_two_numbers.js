@@ -15,7 +15,7 @@
  * 当前值在obj里，返回数组即[返回之前的索引，当前索引]
  */
 var twoSum = function (nums, target) {
-  debugger;
+  
   let obj = {};
   for (let i = 0; i < nums.length; i++) {
     let num = nums[i]
