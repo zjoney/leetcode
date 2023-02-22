@@ -10,6 +10,7 @@
 var subarraySum = function(nums, k) {
   let res = 0;
   let map = new Map;
+  debugger
   //保存当前位置的前缀和
   let sum = 0;
   //前缀和存储到map中
