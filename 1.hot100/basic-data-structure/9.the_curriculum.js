@@ -20,6 +20,7 @@
 var canFinish = (numCourses, prerequisites) => {
   
   const inDegree = new Array(numCourses).fill(0); // 入度数组
+  debugger
   const map = {};                                 // 邻接表
   for (let i = 0; i < prerequisites.length; i++) {
     inDegree[prerequisites[i][0]]++;              // 求课的初始入度值
