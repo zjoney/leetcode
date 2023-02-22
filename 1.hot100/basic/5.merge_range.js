@@ -18,6 +18,7 @@
  */
  var merge = function(intervals) {
   if(intervals.length <= 1) return intervals;
+  debugger
   intervals.sort((a, b) => a[0] - b[0]);
   let ans = [];
   ans.push(intervals[0]);
