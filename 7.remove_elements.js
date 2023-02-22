@@ -21,6 +21,7 @@
  */
 var removeElement = function(nums, val) {
   let ans = 0;
+  debugger
   for(const num of nums) {
       if(num != val) {
           nums[ans] = num;
