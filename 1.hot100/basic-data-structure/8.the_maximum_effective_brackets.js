@@ -17,6 +17,7 @@ var longestValidParentheses = (s) => {
   let maxLen = 0;
   const stack = [];
   stack.push(-1);
+  debugger
   for (let i = 0; i < s.length; i++) {
     const c = s[i];
     if (c == '(') {       // 左括号的索引，入栈
