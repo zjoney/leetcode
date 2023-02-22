@@ -22,22 +22,22 @@
  * 如果当前下标未被访问过，则以当前下标为开始下标，并标记得到的元素S，开始下一个遍历。
  * 如果当前下标被访问过，因此可以跳过当前下标。
  */
- var arrayNesting = function(arr) {
-    debugger;
+var arrayNesting = function (arr) {
+  debugger;
   let initVal = 0, len = arr.length;
   for (let i = 0; i < len; ++i) {
-      let count = 0;
-      while (arr[i] < len) {
-          const num = arr[i];
-          arr[i] = len;
-          i = num;
-          ++count;
+    let count = 0;
+    while (arr[i] < len) {
+      const num = arr[i];
+      arr[i] = len;
+      i = num;
+      ++count;
 
-      }
-      initVal = Math.max(initVal, count);
+    }
+    initVal = Math.max(initVal, count);
   }
   return initVal;
 };
 // test 
-const arr = [5,4,0,3,1,6,2];
+const arr = [5, 4, 0, 3, 1, 6, 2];
 console.log(arrayNesting(arr)) // 4
