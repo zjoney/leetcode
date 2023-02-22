@@ -23,9 +23,9 @@
  *  单调递减查看[image/the_maximum_sliding_window.gif]
  */
  var maxSlidingWindow = function (nums, k) {
-    debugger;
+    
     const q = [];//单递减的双端队列
-    const res = [];
+    const res = [];debugger;
     //最后的返回结果
     for (let i = 0; i < nums.length; i++) {//循环nums
         debugger
