@@ -12,7 +12,7 @@
  * 按位异或知识点考察，相同为0，不同1
  */
 var singleNumber = function (nums) {
-  //注意，这里为0而不是其它值得原因并不是盲目的：甲^0得到甲，甲^甲得到0
+  // 注意，这里为0而不是其它值得原因并不是盲目的：甲^0得到甲，甲^甲得到0
   let result = 0;
   for (const num of nums) {
     // ^ 为提供的按位异或操作符，而 ^= 相似 += ,其效果等价于 result = result ^ nums[i]
