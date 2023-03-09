@@ -14,17 +14,31 @@
  * 拿到的值存入obj变量里，如果当前的值不在Obj,那么就存obj[target-当前值] = 当前索引，
  * 当前值在obj里，返回数组即[返回之前的索引，当前索引]
  */
-var twoSum = function (nums, target) {
-  
-  let obj = {};
-  for (let i = 0; i < nums.length; i++) {
-    let num = nums[i]
-    if (num in obj) {
-      return [obj[num], i]
-    } else {
-      obj[target - num] = i
+// var twoSum = function (nums, target) {
+//   let obj = {};
+//   for (let i = 0; i < nums.length; i++) {
+//     let num = nums[i]
+//     if (num in obj) {
+//       return [obj[num], i]
+//     } else {
+//       obj[target - num] = i
+//     }
+//   }
+// };
+// const nums = [2, 7, 11, 15], target = 9;
+// console.log(twoSum(nums, target));// [0, 1]
+
+const twoSum = (nums, target) => {
+  const obj = {};                    // 存储出现过的数字，和对应的索引               
+
+  for (let i = 0; i < nums.length; i++) {       // 遍历元素   
+    const num = nums[i];                     // 当前元素   
+    const targetNum = target - num;          // 满足要求的目标元素   
+    const targetNumIndex = obj[targetNum]; // 在prevNums中获取目标元素的索引
+    if (targetNumIndex !== undefined) {         // 如果存在，直接返回 [目标元素的索引,当前索引]
+      return [targetNumIndex, i];
+    } else {                                    // 如果不存在，说明之前没出现过目标元素
+      obj[num] = i;                     // 存入当前的元素和对应的索引
     }
   }
-};
-const nums = [2, 7, 11, 15], target = 9;
-console.log(twoSum(nums, target));// [0, 1]
+}
