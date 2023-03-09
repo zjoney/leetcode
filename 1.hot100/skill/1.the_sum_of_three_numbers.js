@@ -17,20 +17,20 @@
  * 注意，输出的顺序和三元组的顺序并不重要。
 
  */
-var threeSum = function(nums) {
+var threeSum = function (nums) {
   if (nums.length < 3) {
     return [];
   }
   debugger
   // 从小到大排序
-  const arr = nums.sort((a,b) => a-b);
+  const arr = nums.sort((a, b) => a - b);
   // 最小值大于 0 或者 最大值小于 0，说明没有无效答案
   if (arr[0] > 0 || arr[arr.length - 1] < 0) {
     return [];
   }
   const n = arr.length;
   const res = [];
-  for (let i = 0; i < n; i ++) {
+  for (let i = 0; i < n; i++) {
     // 如果当前值大于 0，和右侧的值再怎么加也不会等于 0，所以直接退出
     if (nums[i] > 0) {
       return res;
@@ -42,30 +42,30 @@ var threeSum = function(nums) {
     // 双指针
     let l = i + 1;
     let r = n - 1;
-    while(l < r) {
+    while (l < r) {
       const temp = arr[i] + arr[l] + arr[r];
       if (temp > 0) {
-        r --;
+        r--;
       }
       if (temp < 0) {
-        l ++;
+        l++;
       }
       if (temp === 0) {
         res.push([nums[i], nums[l], nums[r]]);
         // 跳过重复值
-        while(l < r && nums[l] === nums[l + 1]) {
-          l ++;
+        while (l < r && nums[l] === nums[l + 1]) {
+          l++;
         }
         // 同上
-        while(l < r && nums[r] === nums[r - 1]) {
-          r --;
+        while (l < r && nums[r] === nums[r - 1]) {
+          r--;
         }
-        l ++;
-        r --;
+        l++;
+        r--;
       }
     }
   }
   return res;
 };
-const nums = [-1,0,1,2,-1,-4];
-console.log(threeSum(nums)); // [ [ -1, -1, 2 ], [ -1, 0, 1 ] ]
+const nums3 = [-1, 0, 1, 2, -1, -4];
+console.log(threeSum(nums3)); // [ [ -1, -1, 2 ], [ -1, 0, 1 ] ]
