@@ -39,3 +39,5 @@ var isValid = function(s) {
   }
   return stack.length === 0
 };
+const s = "(]"
+console.log(isValid(s))
