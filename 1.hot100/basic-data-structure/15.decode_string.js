@@ -15,6 +15,7 @@ var decodeString = function (s) {
   // 用两个栈来存放当前状态，前者是重复次数，后者是累积字符串
   let repetStack = [], resStack = [];
   //拼接字符串
+  debugger
   let resStr = "";
   //表示重复次数
   let repet = 0;
