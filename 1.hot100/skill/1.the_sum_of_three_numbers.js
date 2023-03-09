@@ -68,4 +68,41 @@ var threeSum = function (nums) {
   return res;
 };
 const nums3 = [-1, 0, 1, 2, -1, -4];
-console.log(threeSum(nums3)); // [ [ -1, -1, 2 ], [ -1, 0, 1 ] ]
+// console.log(threeSum(nums3)); // [ [ -1, -1, 2 ], [ -1, 0, 1 ] ]
+/**
+ * 先对数组排序，对外层循环，注意去重，然后再用左右指针向中间收敛（还是要注意去重）去做two sum
+ * 时间复杂度 O(n^2) 空间复杂度 O(1)
+ * @param {*} nums 
+ * @returns 
+ */
+var threeSum2 = function (nums) {
+  nums.sort((num1, num2) => num1 - num2);
+  console.log('sort', nums.sort((num1, num2) => num1 - num2))
+  let result = [];
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] > 0) return result; // 因为求三数之和为0，如果第一个值已经大于0，那后面不可能有解了，就直接返回结果
+    if (i > 0 && nums[i] == nums[i - 1]) continue; // 去重
+   
+    let left = i + 1;
+    console.log('left', left)
+    let right = nums.length - 1; //
+    //  1-4、-4+-1+2=-3
+    //  2-4、-1-1+2=0
+    //  3-4、-1+0+1=0
+    while (left < right) {
+      if (nums[i] + nums[left] + nums[right] == 0) {
+        result.push([nums[i], nums[left], nums[right]]);
+        while (left < right && nums[left] == nums[left + 1]) left++; // 去重
+        while (left < right && nums[right] == nums[right - 1]) right--; // 去重
+        left++;
+        right--;
+      }
+      else if (nums[i] + nums[left] + nums[right] < 0) left++;// 三数之和小于0，左指针向右移动
+
+      else if (nums[i] + nums[left] + nums[right] > 0) right--; // 三数之和大于0，右指针向左移动
+    }
+  }
+  return result;
+};
+const nums1 = [-1, 0, 1, 2, -4];
+console.log(threeSum2(nums1))
