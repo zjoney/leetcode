@@ -1,5 +1,5 @@
 /**
- * 考察：栈、、动态规划
+ * 考察：栈、动态规划
  * @difficulty 困难
  * @summary:32. 最长有效括号
  * 给你一个只包含 '(' 和 ')' 的字符串，找出最长有效（格式正确且连续）括号子串的长度。
@@ -22,7 +22,7 @@ var longestValidParentheses = (s) => {
     const c = s[i];
     if (c == '(') {       // 左括号的索引，入栈
       stack.push(i);
-    } else {    
+    } else {
       debugger          // 遍历到右括号
       stack.pop();        // 栈顶的左括号被匹配，出栈
       if (stack.length) { // 栈未空
@@ -38,3 +38,5 @@ var longestValidParentheses = (s) => {
 
 const s = '(()(()'
 console.log(longestValidParentheses(s)); //2
+
+
