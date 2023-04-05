@@ -10,9 +10,12 @@
 
 <body>
   <script src="./emit.js">
+
+  </script>
+  <script>
     /*
-   * 手写实现发布订阅模式
-   */
+  * 手写实现发布订阅模式
+  */
     let Event1 = new Event()
 
     function user1(content) {
@@ -37,7 +40,7 @@
     Event1.on('article1', user3);
 
     // 取消user2方法的订阅
-    Event1.off('article2', user2);
+    // Event1.off('article2', user2);
 
     // Event1.once('article1', user4)
 
