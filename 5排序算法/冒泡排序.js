@@ -1,6 +1,7 @@
 /**
  * https://www.runoob.com/w3cnote/bubble-sort.html
  * 比较两个相邻的数据大小，大的就下沉
+ * 时间复杂度O(n²) 
  * @param {*} arr 
  * @returns 
  */
