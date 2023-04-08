@@ -4,6 +4,9 @@
  * 时间复杂度O(n²) 
  * @param {*} arr 
  * @returns 
+ * 1.基本的排序算法：冒泡排序（Bubble Sort）、插入排序（Insertion Sort）
+2.常考的排序算法: 归并排序（Merge Sort）、快速排序（Quick Sort）
+3.其他排序算法：堆排序（Heap Sort）、桶排序（Bucket Sort)
  */
 function bubbleSort(arr) {
   var len = arr.length;
