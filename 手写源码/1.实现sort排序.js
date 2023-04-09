@@ -1,5 +1,5 @@
 /**
- * 实现sort排序
+ * 归并排序
  * @param {*} arr 
  * @returns 
  */

@@ -1,3 +1,11 @@
+/**
+ * 对JS的对象进行深克隆，避免克隆后的对象引用原来的对象
+ * 普通版本 考虑对象中的String和Number
+ * 进阶版本 考虑Date，循环引用，和正则表达等类型
+ * @param {*} obj 
+ * @param {*} map 
+ * @returns 
+ */
 const deepClone = function(obj, map = new Map()) {
   if (!obj) return obj
   if (map.has(obj)) { // 判断是否循环引用
