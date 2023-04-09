@@ -17,7 +17,5 @@ const debounce = function(fn, timeout = 300) {
 function saveInput(id){
   console.log('Saving data', id);
 }
-const testDebounce = debounce((id) => saveInput(id));
-setInterval(() => {
-  testDebounce(12)
-}, 250)
+const testDebounce = debounce((id) => saveInput(id),250);
+testDebounce(12)
