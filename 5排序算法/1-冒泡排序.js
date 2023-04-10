@@ -22,4 +22,5 @@ function bubbleSort(arr) {
   console.log(arr);
   return arr;
 }
-bubbleSort(['f', 'o', 'o', 'b', 'a', 'r', 'l', 'e', 'd']);
+const arr = [4, 65, 2, -31, 0, 99, 83, 782, 1,]
+bubbleSort(arr);
