@@ -1,37 +1,39 @@
 /**
  * 采用分治法
  * 实现由两种方法：
-
-自上而下的递归（所有递归的方法都可以用迭代重写，所以就有了第 2 种方法）；
-自下而上的迭代；
+1、自上而下的递归（所有递归的方法都可以用迭代重写，所以就有了第 2 种方法）；
+2、自下而上的迭代；
  */
-function mergeSort(arr) {  // 采用自上而下的递归方法
-  var len = arr.length;
-  if (len < 2) {
-    return arr;
+function mergeSort(arr) {
+  const len = arr.length;
+  if (len <= 1) {
+      return arr;
   }
-  var middle = Math.floor(len / 2),
-    left = arr.slice(0, middle),
-    right = arr.slice(middle);
-  return merge(mergeSort(left), mergeSort(right));
+  const mid = len >> 1;
+  console.log('mid', mid, len)
+  const leftArr = arr.slice(0, mid);
+  const rightArr = arr.slice(mid);
+  const leftMergedArr = mergeSort(leftArr);
+  const rightMergedArr = mergeSort(rightArr);
+  return merge(leftMergedArr, rightMergedArr);
 }
 
-function merge(left, right) {
-  var result = [];
-
-  while (left.length && right.length) {
-    if (left[0] <= right[0]) {
-      result.push(left.shift());
-    } else {
-      result.push(right.shift());
-    }
+function merge(leftArr, rightArr) {
+  let result = [];
+  while (leftArr.length && rightArr.length) {
+      if (leftArr[0] < rightArr[0]) {
+          result.push(leftArr.shift());
+      } else {
+          result.push(rightArr.shift());
+      }
   }
-
-  while (left.length)
-    result.push(left.shift());
-
-  while (right.length)
-    result.push(right.shift());
-
+  while (leftArr.length) {
+      result.push(leftArr.shift())
+  }
+  while (rightArr.length) {
+      result.push(rightArr.shift())
+  }
   return result;
 }
+
+console.log(mergeSort([5,8,3,12,1]))
