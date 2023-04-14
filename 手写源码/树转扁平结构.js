@@ -3,16 +3,15 @@
  * @param {*} tree 树
  * @returns  list
  */
-const treeToList = function(tree) {
+const treeToList = function (tree) {
   let list = []
   treeToListHelper(tree, list)
   list.sort((a, b) => a.id - b.id)
   return list
 }
 
-const treeToListHelper = function(tree, list) {
+const treeToListHelper = function (tree, list) {
   if (!tree) return
-
   for (let item of tree) {
     let id = item.id
     let name = item.name
@@ -70,7 +69,7 @@ let tree = [
         parentId: 2
       }
     ]
-  }  
+  }
 ];
 
 console.log(treeToList(tree))
