@@ -1530,3 +1530,558 @@ person1.obj.foo2.call(person2)() // person2
 person1.obj.foo2().call(person2) // obj
 ```
 
+# 34. 排列 
+
+输入 [['a', 'b'], ['n', 'm'], ['0', '1']]
+
+返回 ['an0', 'am0', 'an1', 'am1', 'bn0', 'bm0', 'bn1', 'bm0']
+
+这个题目和 leetcode #17 类似，有递归和回溯的概念，需要多加练习
+
+
+```js
+const permutation = function(array) {
+  let res = []
+  permutationHelper(array, 0, [], res)
+  return res
+}
+const permutationHelper = function(array, index, path, res) {
+  if (array.length === index) {
+    res.push(path.join(''))
+    return
+  }
+
+  for (let i = 0; i < array[index].length; i++) {
+    let char = array[index][i]
+    permutationHelper(array, index + 1, [...path, char], res)
+  }
+}
+console.log(permutation([['a', 'b'], ['n', 'm'], ['0', '1']]))
+```
+
+# 35. 版本号排序的方法
+
+题目描述: 有一组版本号如下['0.1.1', '2.3.3', '0.302.1', '4.2', '4.3.5', '4.3.4.5']。现在需要对其进行排序，排序的结果为 [ '4.3.5', '4.3.4.5', '4.2', '2.3.3', '0.302.1', '0.1.1' ]
+
+```js
+const sortByVersion = function(versions) {
+  versions.sort((a, b) => {
+    let alist = a.split('.')
+    let blist = b.split('.')
+    let index = 0
+
+    while (alist[index] && blist[index] && alist[index] === blist[index]) {
+      index++
+    }
+
+    if (alist[index] && !blist[index]) return -1 // if a is longer, a should be larger
+    else if (!alist[index] && blist[index]) return 1 // if b is longer, b should be larger
+    else if (alist[index] !== blist[index]) return blist[index] - alist[index] // if a != b, return b - a 
+
+    return 0 // a = b
+  })
+
+  return versions
+}
+
+console.log(sortByVersion(['0.1.1', '2.3.3', '0.302.1', '4.2', '4.3.5', '4.3.4.5', '4.3.5.1']))
+// result [ '4.3.5.1', '4.3.5', '4.3.4.5', '4.2', '2.3.3',   '0.302.1', '0.1.1']
+
+```
+
+# 36. EventEmitter
+
+题目描述: 实现一个发布订阅模式拥有 on emit once off 方法
+
+```js
+class EventEmitter {
+  constructor() {
+    this.events = {};
+  }
+
+  // 添加订阅
+  // 事件是队列的形式
+  on(type, handler) {
+    let handlers = this.events[type] || []
+    handlers.push(handler)
+    this.events[type] = handlers
+  }
+
+  // 删除订阅
+  // 删除事件队列中的其中一个
+  off(type, handler) {
+    let handlers = this.events[type] || []
+    handlers = handlers.filter((item) => {
+      return item !== handler
+    })
+    this.events[type] = handlers
+  }
+
+  // 触发事件
+  emit(type, ...args) {
+    const handlers = this.events[type]
+    if (!handlers) return
+
+    handlers.forEach((handler) => {
+      handler.apply(this, args)
+    })
+  }
+
+  // 只执行一次订阅事件
+  // 需要使用到on and off
+  once(type, callback) {
+    let wrapper = function() {
+      callback()
+      this.off(type, wrapper)
+    }
+    this.on(type, wrapper)
+  }
+}
+
+const event = new EventEmitter();
+const handler = (...res) => {
+  console.log(res);
+};
+event.on("click", handler);
+event.emit("click", 1, 2, 3, 4);
+event.off("click", handler);
+event.emit("click", 1, 2);
+event.once("dbClick", () => {
+  console.log(123456);
+});
+event.emit("dbClick");
+event.emit("dbClick");
+```
+
+# 37. JS中实现一个继承，寄生组合继承
+
+ES6之前的继承是通过 原型链 来实现的，也就是每一个构造函数都会有一个prototype属性，然后如果我们调用一个实例的方法或者属性，首先会在自身寻找，然后在构造函数的prototype上寻找，而prototype本质上就是一个实例，因此如果prototype上还没有则会往prototype上的构造函数的prototype寻找，因此实现继承可以让构造函数的prototype是父级的一个实例就是以实现继承。
+
+```js
+// 寄生组合继承
+function Parent(name) {
+  this.name = name
+  this.say = () => {
+     console.log("111")
+  }
+}
+function Child(name) {
+  Parent.call(this, name) // step 1
+  this.name = name
+}
+Child.prototype = Object.create(Parent.prototype) // step 2
+Child.prototype.constructor = Child // step 3
+Parent.prototype.play = () => {
+  console.log("222")
+}
+
+let child = new Child("儿子");
+console.log(child.name);
+child.say();
+```
+
+# 38. 题目描述: 渲染百万条结构简单的大数据时 怎么使用分片思想优化渲染
+
+这个题目涉及到 React Fiber 中的大数据量分片的概念。当浏览器有空闲时间的时候，React会执行任务，当没有时间的时候，React会暂停并且缓存暂停的位置，下次有时间了继续执行。
+
+```js
+let total = 10000
+let current = 0
+let max = 20 // create 20 items in one frame
+let ul = document.getElementById('thelonglist')
+
+const perform = function() {
+  if (current >= total) return
+
+  window.requestAnimationFrame(() => {
+    // create and append list
+    for (let i = 0; i < max && current < total; i++) {
+      let li = document.createElement('li')
+      li.innerText = `${current} ${new Date().getTime()}`
+      ul.appendChild(li)
+      current++
+    }
+
+    console.log('next', new Date().getTime())
+    // 一个frame只运行一次，所以需要再继续注册
+    perform()
+  })
+}
+
+perform()
+
+```
+
+# 39. 写一个事件代理函数，需要判断child是parent的子节点
+
+事件代理是利用事件冒泡的机制，对父节点绑定事件监听函数，避免对子节点的重复绑定。如果子节点是1000个li，那么如果绑定1000个事件会造成很大的内存浪费。绑定一个点击事件在父节点上，通过target来识别是哪个子节点的事件。
+
+```js
+<ul id="parent">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+
+function proxyEvent(event, callback, parent, child) {
+  let parentNode = document.querySelectorAll(parent)[0]
+
+  const handler = (event) => {
+    // target is the element triggered the event
+    // currrent target is the element registred the event
+    // 判断target 是否为 child
+    if (event.target.matches(child)) {
+      // 判断child是parent的子节点
+      if (parentNode.contains(event.target)) {
+        callback.call(this, event)
+      }
+    }
+  }
+
+  parentNode.addEventListener(event, handler)
+}
+proxyEvent('click', (e) => {
+  console.log(e.target.innerText)
+}, '#parent', 'li')
+```
+
+# 40. 组合总和
+
+给定一个不含重复数字的数组array, 指定个数n, 目标和sum, 判断是否含有由n个不同数字相加得到sum的情况, leetcode 40 变种, 数字不得重复使用。
+
+```js
+function combinationSum(nums, n, sum) {
+  let res = []
+  nums.sort((a, b) => a - b)
+  combinationSumHelper(nums, n, sum, 0, [], res)
+  return res
+}
+function combinationSumHelper(nums, n, sum, index, path, res) {
+  if (path.length === n && sum === 0) {
+    res.push(path)
+    return
+  }
+  if (sum < 0 || path.length > n) {
+    return
+  }
+
+  let set = new Set()
+  for (let i = index; i < nums.length; i++) {
+    let current = nums[i]
+    if (set.has(current)) continue
+    set.add(current)
+    combinationSumHelper(nums, n, sum - current, i + 1, [...path, current], res)
+  }
+}
+console.log(combinationSum([10,1,2,7,6,1,5], 3, 8))
+```
+
+# 41. 实现一个request最大并发控制机
+
+function request(urls, maxNumber, callback) 要求编写函数实现，根据urls数组内的url地址进行并发网络请求，最大并发数maxNumber，当所有请求完毕后调用callback函数(已知请求网络的方法可以使用fetch api)。和上面的promise scheduler类似。
+
+```js
+function request(urls, maxNumber, callback) {
+  let queue = []
+  let currentJobs = 0
+  let results = []
+  const request = require('request');
+
+  const run = function() {
+    if (queue.length === 0 || currentJobs >= maxNumber) return
+
+    currentJobs++
+    const url = queue.shift()
+    console.log('started', url)
+    request(url, (error, response, body) => {
+      console.log('finshed', url)
+      currentJobs--
+      if (error) {
+        results.push({ error, time: new Date()})
+      } else {
+        results.push({ res: body, time: new Date()})
+      }
+
+      if (results.length === urls.length) {
+        callback(results)
+        return
+      }
+      run()
+    })
+  }
+
+  urls.forEach((url) => {
+    queue.push(url)
+    run(url)
+  })
+}
+
+const urls = [
+  "https://www.timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam",
+  "https://www.timeapi.io/api/Time/current/coordinate?latitude=38.9&longitude=-77.03",
+  "https://www.timeapi.io/api/Time/current/ip?ipAddress=237.71.232.203",
+  "https://www.timeapi.io/api/TimeZone/zone?timeZone=Europe/Amsterdam",
+  "https://www.timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam",
+  "https://www.timeapi.io/api/Time/current/coordinate?latitude=38.9&longitude=-77.03",
+  "https://www.timeapi.io/api/Time/current/ip?ipAddress=237.71.232.203",
+  "https://www.timeapi.io/api/TimeZone/zone?timeZone=Europe/Amsterdam",
+  "https://www.timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam",
+  "https://www.timeapi.io/api/Time/current/coordinate?latitude=38.9&longitude=-77.03",
+  "https://www.timeapi.io/api/Time/current/ip?ipAddress=237.71.232.203",
+  "https://www.timeapi.io/api/TimeZone/zone?timeZone=Europe/Amsterdam",
+]
+
+console.log(request(urls, 3, (res) => {
+  console.log(res)
+}))
+```
+
+# 42. 手写代码：写个单例模式
+
+这里是用 ES6 Class 来实现的单列模式，使用 ES5 Function 实现会比较复杂，有兴趣的也可以尝试。
+
+```js
+// es6 class
+class SingleClass {
+  constructor() {
+    this.instance = null
+  }
+
+  static getInstance(name) {
+    if (this.instance) return this.instance
+
+    this.instance = new SingleClass(name)
+    return this.instance
+  }
+}
+let Jack = SingleClass.getInstance('Jack');
+let Tom = SingleClass.getInstance('Tom');
+console.log( Jack === Tom ); // true
+
+```
+
+# 43. 实现抽奖函数
+
+实现抽奖函数rand，保证随机性，输入为表示对象数组，对象有属性n表示人名，w表示权重，随机返回一个中奖人名，中奖概率和w成正比。和微信抢红包类似。
+
+```js
+let people = [
+  { n: 'p1', w: 1 }, // 0 - 1
+  { n: 'p2', w: 100 }, // 1 - 101
+  { n: 'p3', w: 100 } // 101 - 201
+];
+
+let rand = function (p) {
+  const totalWeight = p.reduce(function (pre, cur, index) {
+    // 1. get the total weight, create a range for each person
+    cur.startW = pre;
+    return cur.endW = pre + cur.w
+  }, 0)
+  // 1. get a random number between the total weight
+  let random = Math.ceil(Math.random() * totalWeight)
+  // console.log(totalWeight, p, random)
+
+  // use array.find method to choose the person who has the random number
+  let selectPeople = p.find(people => people.startW < random && people.endW > random)
+  return selectPeople.n
+};
+
+console.log(rand(people))
+```
+
+# 44. 实现这个u，打印出结果
+
+这个题目和LazyMan类似，这些题目考验的是候选人对异步执行的理解。
+
+```js
+u.console('breakfast').setTimeout(3000).console('lunch').setTimeout(3000).console('dinner')
+
+class U {
+  constructor() {
+    this.tasks = []
+
+    // 关键不然不会执行，首次执行，但是希望在同步任务之后执行
+      setTimeout(() => {
+        this.next()
+      }, 0)
+  }
+
+  console(name) {
+    this.tasks.push(() => {
+      setTimeout(() => {
+        console.log(name)
+        this.next()
+      }, 0)
+    })
+    return this
+  }
+  setTimeout(time) {
+    this.tasks.push(() => {
+      setTimeout(() => {
+        console.log(time)
+        this.next()
+      }, time)
+    })
+    return this
+  }
+  next() {
+    let task = this.tasks.shift()
+    if (task) task()
+  }
+}
+
+const u = new U()
+u.console('breakfast').setTimeout(3000).console('lunch').setTimeout(3000).console('dinner')
+
+```
+
+# 45. 获取目标数值
+
+题目描述：getPathValue({a:{b:[1,2,3]}}, 'a.b[0]') => 返回 1
+
+```js
+const getPathValue = function(map, path) {
+  return getPathValueHelper(map, path, '')
+}
+const getPathValueHelper = function(map, path, currentPath) {
+  if (path === currentPath) return map
+
+  if (Object.prototype.toString.call(map) === '[object Object]') {
+    for (let key in map) {
+      let val = map[key]
+      let nextPath = currentPath ? `${currentPath}.${key}` : `${currentPath}${key}`
+      let res = getPathValueHelper(val, path, nextPath)
+      if (res) return res
+    }
+  } else if (Object.prototype.toString.call(map) === '[object Array]') {
+    for (let key in map) {
+      let val = map[key]
+      let nextPath = currentPath ? `${currentPath}[${key}]` : `${currentPath}${key}`
+      let res = getPathValueHelper(val, path, nextPath)
+      if (res) return res
+    }
+  }
+}
+console.log(getPathValue({a:{b:[1,2,3]}}, 'a.b[1]'))
+```
+
+# 46. 实现千分位格式化函数
+
+输入一个很大的数字，返回千分位格式化的字符串。比如输入 11112312312，然后返回 11,112,312,312
+
+```js
+const toThousands = function(num) {
+  let array = num.toString().split('')
+  let count = 0
+  let res = ``
+
+  for (let i = array.length - 1; i >= 0; i--) {
+    if (count && count % 3 === 0) {
+      res = `${array[i]},${res}`
+    } else {
+      res = `${array[i]}${res}`
+    }
+    count++
+  }
+
+  return res
+}
+console.log(toThousands(11112312312))
+```
+
+# 47. 给数组中的字符串编号
+
+题目：f(['ab', 'c', 'd', 'ab', 'c']) => ['ab1', 'c1', 'd', 'ab2', 'c2']
+
+```js
+const label = function(list) {
+  let map = new Map()
+  let res = []
+
+  for (let i = 0; i < list.length; i++) {
+    let val = list[i]
+    if (map.has(val)) {
+      let count = map.get(val) || 0
+      if (count === 1) {
+        let index = res.indexOf(val)
+        res[index] = `${val}1`
+      }
+      count++
+      map.set(val, count)
+      res.push(`${val}${count}`)
+    } else {
+      map.set(val, 1)
+      res.push(`${val}`)
+    }
+  }
+
+  return res
+}
+
+console.log(label(['ab', 'c', 'd', 'ab', 'c']))
+```
+
+# 48. 实现一个sum，执行asyncAdd
+
+假设有一台本地机器，无法做加减乘除运算（包括位运算），因此无法执行 a + b = 1 这样的 JS 代码，然后我们提供一个服务器端的 HTTP API，可以传两个数字类型的参数，响应结果是这两个参数的和，这个 HTTP API 的 JS SDK（在本地机器上运行）的使用方法如下:
+
+```js
+asyncAdd(3, 5, (err, result) => {
+    console.log(result); // 8
+});
+```
+
+```js
+// 模拟 asyncAdd API
+function asyncAdd(a, b, cb) {
+    setTimeout(() => {
+        cb(null, a + b);
+    }, Math.floor(Math.random()*1000))
+}
+
+// 把 asyncAdd 封装成 promise
+const asyncAddPro = function(a, b) {
+    return new Promise((resolve, reject) => {
+        asyncAdd(a, b, (err, result) => {
+            resolve(result)
+        });
+    })
+}
+
+// 要求 sum 能在最短的时间里返回以上结果 
+const sum = function(...args) {
+    return new Promise((resolve, reject) => {
+        // 并发执行
+        // 最后的结果会在index 0，而且数组中只剩最后一个元素
+        if (args.length === 1) {
+            resolve(args[0])
+            return
+        }
+        let promises = []
+        let res = []
+        for (let i = 0; i < args.length; i += 2) {
+            // 单数 args，把最后一个推入res
+            if (!args[i+1]) {
+                res.push(args[i])
+                continue
+            } 
+            let a = args[i]
+            let b = args[i+1]
+            promises.push(asyncAddPro(a, b))
+        }
+        // 计算promises中的结果
+        let all = await Promise.all(promises)
+        // 结果推入res，进行下一轮
+        res = res.concat(all)
+        resolve(await sum(...res))
+    })
+}
+
+// 现在要求在本地机器上实现一个 sum 函数，支持以下用法：
+(async () => {
+    const result1 = await sum(1, 4, 6, 9, 2, 4);
+    const result2 = await sum(3, 4, 9, 2, 5, 3, 2, 1, 7);
+    const result3 = await sum(1, 6, 0, 5);
+    console.log([result1, result2, result3]); // [26, 36, 12]
+})();
+```

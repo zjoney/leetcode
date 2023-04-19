@@ -27,9 +27,9 @@
         长腿，通体黑毛，奔到近处，群雄眼前一亮，金光闪闪，却见每匹马的蹄铁竟然
         是黄金打就。来者一共是一十九骑，人数虽不甚多，气势之壮，却似有如千军万
         马一般，前面一十八骑奔到近处，拉马向两旁一分，最后一骑从中驰出</span>
-        <input type="checkbox" id="exp" />
-      </div>
-   
+      <input type="checkbox" id="exp" />
+    </div>
+
   </div>
   <style>
     .content {
@@ -74,6 +74,7 @@
       -webkit-line-clamp: 999;
       /*设置一个足够大的行数就可以了*/
     }
+
     .btn::after {
       content: '展开'
     }
@@ -82,6 +83,15 @@
       content: '收起'
     }
   </style>
+  <script>
+    function A() {
+      if ('ff' instanceof A) {
+        throw new Error('Uncaught TypeError: A is not a constructor')
+      }
+      // do other things
+    }
+    A()
+  </script>
 </body>
 
 </html>
