@@ -1,11 +1,4 @@
-# leetcode
-日常练习leetcode
 
--- commitizen
--> npm i commitizen -g
--> npm i git-cz -g
--> 不要使用git bash终端
--> git add . 命令之后，使用 git cz
 ===================
 ![Getting Started](./images/1.different_paths.png)
 
