@@ -10,6 +10,7 @@
   <a href="https://github.com/zjoney/leetcode/network/members"><img src="https://img.shields.io/github/forks/zjoney/leetcode?color=42b883&logo=github&style=flat-square" alt="forks"></a>
   <a href="https://opencollective.com/zjoney-leetcode/sponsors/badge.svg" alt="Sponsors on Open Collective"><img src="https://img.shields.io/opencollective/sponsors/doocs-leetcode?color=42b883&style=flat-square&logo=open%20collective&logoColor=ffffff" /></a>
 </p>
+
 # 前端啃算法
 
 近期整理了一下高频的前端面试题以及算法题，大家当成有趣的脑筋急转弯，分享给大家一起来学习。如有问题，欢迎指正！ 
@@ -277,3 +278,6 @@
 | 2   | [88.合并两个有序数组](https://leetcode.cn/problems/merge-sorted-array/) | [JavaScript](./array/88.合并两个有序数组.js) | Easy       |
 | 3   | [565.数组嵌套](https://leetcode.cn/problems/array-nesting/)             | [JavaScript](./array/565.数组嵌套.js)        | Medium     |
 | 4   | [127.单词接龙](https://leetcode.cn/problems/word-ladder/)               | [JavaScript](./binarytree/127.单词接龙.js)   | Hard       |
+| 5   | [88.合并两个有序数组](https://leetcode.cn/problems/word-ladder/)               | [JavaScript](./array/88.合并两个有序数组.js)   | Easy       |
+
+
