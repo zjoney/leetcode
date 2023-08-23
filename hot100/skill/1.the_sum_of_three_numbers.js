@@ -29,7 +29,6 @@ var threeSum = function (nums) {
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] > 0) return result; // 因为求三数之和为0，如果第一个值已经大于0，那后面不可能有解了，就直接返回结果
     if (i > 0 && nums[i] == nums[i - 1]) continue; // 去重
-
     let left = i + 1;
     let right = nums.length - 1;
     while (left < right) {
@@ -46,6 +45,6 @@ var threeSum = function (nums) {
     }
   }
   return result;
-};
+}
 const nums1 = [-1, 0, 1, 2, -4];
 console.log(threeSum(nums1))

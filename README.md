@@ -278,6 +278,6 @@
 | 2   | [88.合并两个有序数组](https://leetcode.cn/problems/merge-sorted-array/) | [JavaScript](./array/88.合并两个有序数组.js) | Easy       |
 | 3   | [565.数组嵌套](https://leetcode.cn/problems/array-nesting/)             | [JavaScript](./array/565.数组嵌套.js)        | Medium     |
 | 4   | [127.单词接龙](https://leetcode.cn/problems/word-ladder/)               | [JavaScript](./binarytree/127.单词接龙.js)   | Hard       |
-| 5   | [88.合并两个有序数组](https://leetcode.cn/problems/word-ladder/)               | [JavaScript](./array/88.合并两个有序数组.js)   | Easy       |
+| 5   | [88.合并两个有序数组](https://leetcode.cn/problems/merge-sorted-array/)               | [JavaScript](./array/88.合并两个有序数组.js)   | Easy       |
 
 
