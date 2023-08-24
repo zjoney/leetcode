@@ -1,25 +1,38 @@
 /**
- * 字符串所有排列组合
- * 利用回溯算法，计算所有字符串的组合
- * @param {array} list - 字符串列表
- * @param {array} result - 最终的结果
- * @param {string} current - 当前的字符串
- * @param {string} temp - 当前固定的字符
+字符串的排列
+题目：输入一个字符串，打印出该字符串中，所有字符的排列组合
+输入：'abc'
+输出：['abc', 'acb', 'bca', 'bac', 'cab', 'cba']
+ * @param {string} s
+ * @return {string[]}
+ * 全排列算法:
+ *   固定位置依次递归交换位置穷举出所有的可能性。
  */
+var permutation = function (s) {
+  const char = s.split('');
+  const res = [];
+  const dsf = function (n) {
+    // 递归的出口,如果是遍历到最后一个位置此方法就解了
+    if (n === char.length) {
+      res.push(char.join(''));
+      return;
+    }
+    const catSet = new Set();
+    for (let i = n; i < char.length; i++) {
+      //如果有相同的交换，则不需要处理枝减。
+      if (catSet.has(char[i])) continue;
+      catSet.add(char[i]);
+      // 被固定的位置和其他位置依次交换位置
+      { const t = char[n]; char[n] = char[i]; char[i] = t }
+      // 递归下一个位置  
+      dsf(n + 1);
+      // 被交换的位置需要回溯归位。
+      { const t = char[n]; char[n] = char[i]; char[i] = t }
+    }
+  }
+  dsf(0);
+  return res.sort();
+};
 
-function stringGroup(list = [], result = [], current = "", temp = "") {
-  current += temp;
-  if (list.length === 0) {
-    // 递归的出口，将对应结果添加到list中
-    return result.push(current);
-  }
-  for (let i = 0; i < list.length; i++) {
-    // 每次递归 固定第一个字符
-    temp = list.shift();
-    stringGroup(list, result, current, temp);
-    // 将删除的temp重新添加到queue尾部，实现将数组反转的效果，如[a,b,c]反转为[c,b,a]
-    list.push(temp);
-  }
-  // 这里去重是解决str中有重复的字母，比如str为'aacd'
-  return [...new Set(result)];
-}
+const str = "abc";
+console.log(permutation(str));
