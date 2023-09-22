@@ -1,5 +1,6 @@
 /**
- * 
+ * 数组转树
+ * 哈希map
  * @param {*} list 
  * @returns 
  */

@@ -878,7 +878,7 @@ const vdomToRdom = function(vdom) {
 console.log(vdomToRdom(vdom))
 ```
 
-# 22. 树转扁平结构
+# 22. 树转扁平结构 
 
 把一个树转化成list
 
@@ -956,12 +956,12 @@ let tree = [
 console.log(treeToList(tree))
 ```
 
-# 23. 扁平转树结构
+# 23. 扁平转树结构  列表转成树
 
-把list转换成树结构
+深度优先遍历
 
 ```js
-const treeToList=(tree){
+const treeToList=(tree)=>{
     const list=[]
     treeToListHelper(tree, list)
     list.sort((a,b)=>a.id-b-id)
@@ -986,6 +986,34 @@ let list = [
   {id:8, name:'部门H', parentId:4}
 ];
 console.log(listToTree(list))
+```
+哈希map
+```js
+function listToTree(data) {
+  // 使用对象重新存储数据, 空间换时间
+  let map = {};
+  // treeData存储最后结果
+  let treeData = [];
+  // 遍历原始数据data，存到map中，id为key，值为数据
+  for (let i = 0; i < data.length; i++) {
+    map[data[i].id] = data[i];
+  }
+  // 遍历对象
+  for (let i in map) {
+    // 根据 parentId 找到的是父节点
+    if (map[i].parentId) {
+      if (!map[map[i].parentId].children) {
+        map[map[i].parentId].children = [];
+      }
+      // 将子节点放到父节点的 children中
+      map[map[i].parentId].children.push(map[i]);
+    } else {
+      // parentId 找不到对应值，说明是根结点，直接插到根数组中
+      treeData.push(map[i]);
+    }
+  }
+  return treeData;
+}
 ```
 
 # 24. 实现 path to object
@@ -2085,7 +2113,8 @@ const sum = function(...args) {
 ```
 
 ```js
-/**第一个不重复的字符
+/**
+ * 第一个不重复的字符
 题目：输入一个字符串，找到第一个不重复字符的下标
 输入：'abcabcde'
 输出：6
@@ -2109,4 +2138,36 @@ function findOneStr(str) {
   }
   return -1;
 }
+```
+```js
+/**
+ * 字符串所有排列组合
+ * 输入一个字符串，打印该字符串中，所有的字符排列组合
+ * 输入:adc
+ * 输出：['abc','acb','bac','bca','cab','cba']
+ * 利用回溯算法，计算所有字符串的组合
+ * @param {array} list - 字符串列表
+ * @param {array} result - 最终的结果
+ * @param {string} current - 当前的字符串
+ * @param {string} temp - 当前固定的字符
+ */
+function stringGroup(list = [], result = [], current = "", temp = "") {
+  current += temp;
+  if (list.length === 0) {
+    // 递归的出口，将对应结果添加到list中
+    return result.push(current);
+  }
+  for (let i = 0; i < list.length; i++) {
+    // 每次递归 固定第一个字符
+    temp = list.shift();
+    stringGroup(list, result, current, temp);
+    // 将删除的temp重新添加到queue尾部，实现将数组反转的效果，如[a,b,c]反转为[c,b,a]
+    list.push(temp);
+  }
+  // 这里去重是解决str中有重复的字母，比如str为'aacd'
+  console.log([...new Set(result)])
+  return [...new Set(result)];
+}
+
+stringGroup([], [], 'abc', '')
 ```
