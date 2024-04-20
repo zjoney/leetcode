@@ -112,6 +112,7 @@ class Promise {
             }
           }, 0);
         });
+
         this.onRejectedCallbacks.push(() => {
           setTimeout(() => {
             try {

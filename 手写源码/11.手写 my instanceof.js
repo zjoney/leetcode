@@ -1,4 +1,9 @@
-
+/**
+ * 
+ * @param {*} original 实例对象object
+ * @param {*} target  构造函数constructor
+ * @returns 
+ */
 const myInstanceof = function(original, target) {
   let proto = original.__proto__
   while (proto) {

@@ -11,3 +11,7 @@
 *.zip
 # misc
 .DS_Store
+
+#file
+/studyNote.md
+/3.26.js

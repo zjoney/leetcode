@@ -3,10 +3,11 @@
  * @param {*} limit 限制并发数
  * @param {*} items 异步函数队列
  */
-export const asyncPool = async ({ limit, items }) => {
+ const asyncPool = async ({ limit, items }) => {
   const promises = []
   const pool = new Set()
   for (let item of items) {
+    debugger
     const fn = async item => await item()
     const promise = fn(item) // 返回的是promise对象
     promises.push(promise)
@@ -19,7 +20,7 @@ export const asyncPool = async ({ limit, items }) => {
   }
   return Promise.all(promises)
 }
-export const sleep = (n, name = 'test') => {
+ const sleep = (n, name = 'test') => {
   return new Promise((resolve) => {
     console.log(n, name, 'start')
     setTimeout(() => {
@@ -27,7 +28,7 @@ export const sleep = (n, name = 'test') => {
     }, n * 1000)
   })
 }
-export const start = async () => {
+ const start = async () => {
   await asyncPool({
     limit: 2,
     items: [
@@ -40,3 +41,10 @@ export const start = async () => {
   })
   console.log('结束啦')
 }
+start()
+
+// const items = [6,7,8]
+// const items = [{a:2},{b:6}]
+// for (let item of items){ 
+//   console.log(item)
+// }
